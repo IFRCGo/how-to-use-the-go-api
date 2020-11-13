@@ -1,0 +1,12 @@
+[
+    {
+        "id": 0,
+        "description": "Sample code to do something",
+        "snippet": {
+            "Power BI": "Code for Power BI",
+            "Tableau": "Code for Tableau",
+            "JavaScript": "Code for JavaScript",
+            "Python": "Code for Python"
+        }
+    }
+]

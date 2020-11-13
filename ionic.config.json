@@ -1,7 +1,7 @@
 {
-  "name": "how-to-use-go-api",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
+    "name": "how-to-use-the-go-api",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "react"
 }

@@ -1,0 +1,12 @@
+ion-content {
+    --background: var(--ion-color-light);
+
+    &.code-container {
+        height: 400px;
+        width: 600px;
+    }
+
+    &.code-snippet {
+        --background: var(--ion-color-light-shade);
+    }
+}
