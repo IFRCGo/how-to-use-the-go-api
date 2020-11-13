@@ -20,7 +20,11 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({ snippet }) => {
                     return (
                         <IonButton
                             key={languageIndex}
-                            fill="clear"
+                            fill={
+                                selectedLanguage === language
+                                    ? "solid"
+                                    : "clear"
+                            }
                             onClick={() => setSelectedLanguage(language)}
                         >
                             {language}
