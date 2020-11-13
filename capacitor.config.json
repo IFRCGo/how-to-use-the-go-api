@@ -1,5 +1,5 @@
 {
-    "appId": "io.ionic.starter",
+    "appId": "org.ifrc.howtousethegoapi",
     "appName": "how-to-use-the-go-api",
     "bundledWebRuntime": false,
     "npmClient": "npm",
