@@ -60,13 +60,13 @@ export const Chart: React.FC = () => {
             .then(response => response.json())
             .then(data => {
                 setProjects(data.results);
-                setData(getChartDataFromProjects(projects));
+                setData(getDataFromProjects(projects));
             });
     };
 
     useEffect(fetchProjects, [projects.length]);
 
-    const getChartDataFromProjects = (projects: Project[]) => {
+    const getDataFromProjects = (projects: Project[]) => {
         const data: Data = {
             labels: [],
             datasets: [
