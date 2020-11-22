@@ -10,6 +10,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { CodeContainer } from "../components/CodeContainer";
+import { Theme } from "../components/Theme";
 import snippets from "../assets/snippets.json";
 import "./Page.css";
 
@@ -25,6 +26,9 @@ const Page: React.FC = () => {
                         <IonMenuButton />
                     </IonButtons>
                     <IonTitle>{name}</IonTitle>
+                    <div slot="end">
+                        <Theme />
+                    </div>
                 </IonToolbar>
             </IonHeader>
 
@@ -34,7 +38,6 @@ const Page: React.FC = () => {
                         <IonTitle size="large">{name}</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                {/* {JSON.stringify(snippet)} */}
                 <IonNote className="ion-margin ion-padding">
                     {snippet.description}
                 </IonNote>
