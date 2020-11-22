@@ -11,12 +11,13 @@ import {
 import React from "react";
 import { CodeContainer } from "../components/CodeContainer";
 import { Theme } from "../components/Theme";
+import { Chart } from "../components/Chart";
 import snippets from "../assets/snippets.json";
 import "./Page.css";
 
 const Page: React.FC = () => {
-    const name = "Example";
     const snippet = snippets[0];
+    const name = snippet.title;
 
     return (
         <IonPage>
@@ -41,6 +42,9 @@ const Page: React.FC = () => {
                 <IonNote className="ion-margin ion-padding">
                     {snippet.description}
                 </IonNote>
+                <div className="ion-margin">
+                    <Chart />
+                </div>
                 <div className="ion-margin">
                     <CodeContainer snippet={snippet.snippet} />
                 </div>
