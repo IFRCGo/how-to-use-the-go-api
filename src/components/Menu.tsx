@@ -35,9 +35,11 @@ const Menu: React.FC = () => {
                     <IonMenuToggle key={0} autoHide={false}>
                         <IonItem
                             className={
-                                location.pathname === "/" ? "selected" : ""
+                                location.pathname === "/how-to-use-the-go-api/"
+                                    ? "selected"
+                                    : ""
                             }
-                            routerLink="/"
+                            routerLink="/how-to-use-the-go-api/"
                             routerDirection="none"
                             lines="none"
                             detail={false}
