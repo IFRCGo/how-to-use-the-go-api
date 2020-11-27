@@ -16,6 +16,7 @@
         "@types/react-router": "^5.1.4",
         "@types/react-router-dom": "^5.1.3",
         "chart.js": "^2.9.4",
+        "gh-pages": "^3.1.0",
         "ionicons": "^5.0.0",
         "react": "^16.13.0",
         "react-chartjs-2": "^2.11.1",
@@ -29,7 +30,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -51,5 +54,6 @@
         "@ionic/lab": "3.2.9",
         "node-sass": "^4.14.1"
     },
-    "description": "An Ionic project"
+    "description": "Examples and usage instructions for the GO API using different tools / languages",
+    "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/"
 }
