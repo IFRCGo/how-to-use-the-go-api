@@ -13,11 +13,15 @@ import { CodeContainer } from "../components/CodeContainer";
 import { Theme } from "../components/Theme";
 import { Chart } from "../components/Chart";
 import snippets from "../assets/snippets.json";
+import languages from "../assets/languages.json";
 import "./Page.css";
 
 const Page: React.FC = () => {
     const snippet = snippets[0];
     const name = snippet.title;
+    const [selectedLanguage, setSelectedLanguage] = React.useState(
+        languages[0]
+    );
 
     return (
         <IonPage>
@@ -43,10 +47,14 @@ const Page: React.FC = () => {
                     {snippet.description}
                 </IonNote>
                 <div className="ion-margin">
-                    <Chart />
+                    <Chart selectedLanguage={selectedLanguage} />
                 </div>
                 <div className="ion-margin">
-                    <CodeContainer snippet={snippet.snippet} />
+                    <CodeContainer
+                        snippet={snippet.snippet}
+                        selectedLanguage={selectedLanguage}
+                        setSelectedLanguage={setSelectedLanguage}
+                    />
                 </div>
             </IonContent>
         </IonPage>

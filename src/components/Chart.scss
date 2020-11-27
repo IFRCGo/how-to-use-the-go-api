@@ -1,4 +1,18 @@
 .chart-container {
     height: 300px;
     width: 600px;
+
+    div#python-chart {
+        .mpld3-xaxis,
+        .mpld3-yaxis {
+            text {
+                fill: #5d5d5e;
+            }
+            line,
+            path {
+                fill: none;
+                stroke: #18191b;
+            }
+        }
+    }
 }
