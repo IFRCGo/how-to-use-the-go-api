@@ -26,7 +26,7 @@ def generateChart(data):
     plt.xticks(indexes * 1.0, labels)
 
     # plt.show()
-    mpld3.save_html(fig, "src/assets/example1.html")
+    mpld3.save_html(fig, "python/example1.html")
 
 
 if __name__ == "__main__":

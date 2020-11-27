@@ -47,7 +47,7 @@ const Menu: React.FC = () => {
                                 ios={codeSlashOutline}
                                 md={codeSlashSharp}
                             />
-                            <IonLabel>Example</IonLabel>
+                            <IonLabel>Example 1: Projects per Sector</IonLabel>
                         </IonItem>
                         <IonItem
                             href="https://goadmin.ifrc.org/docs"

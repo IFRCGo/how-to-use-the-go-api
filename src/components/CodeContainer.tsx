@@ -6,13 +6,15 @@ import "./CodeContainer.scss";
 
 interface CodeContainerProps {
     snippet: { [key: string]: any };
+    selectedLanguage: string;
+    setSelectedLanguage: (language: string) => void;
 }
 
-export const CodeContainer: React.FC<CodeContainerProps> = ({ snippet }) => {
-    const [selectedLanguage, setSelectedLanguage] = React.useState(
-        languages[0]
-    );
-
+export const CodeContainer: React.FC<CodeContainerProps> = ({
+    snippet,
+    selectedLanguage,
+    setSelectedLanguage,
+}) => {
     return (
         <IonContent className="code-container" scrollY={false}>
             <IonHeader>
