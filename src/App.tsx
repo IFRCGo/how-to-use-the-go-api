@@ -31,7 +31,11 @@ const App: React.FC = () => {
                 <IonSplitPane contentId="main">
                     <Menu />
                     <IonRouterOutlet id="main">
-                        <Route path="/" component={Page} exact />
+                        <Route
+                            path="/how-to-use-the-go-api/"
+                            component={Page}
+                            exact
+                        />
                     </IonRouterOutlet>
                 </IonSplitPane>
             </IonReactRouter>
