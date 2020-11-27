@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/how-to-use-the-go-api/precache-manifest.09d7afb8c892cd5ea06a882925a06951.js"
+  "/how-to-use-the-go-api/precache-manifest.5a5cba279dd4143fb7963f22dabac183.js"
 );
 
 self.addEventListener('message', (event) => {
