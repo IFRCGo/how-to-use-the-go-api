@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d67aa832774ddb4f07915a86b8d978b6",
+    "revision": "6eb39af000d3e5727f6d7b7301e29446",
     "url": "/how-to-use-the-go-api/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/how-to-use-the-go-api/static/css/5.8921c4c4.chunk.css"
   },
   {
-    "revision": "a9f3962afc930a68fa02",
+    "revision": "88eb43ef101010f03283",
     "url": "/how-to-use-the-go-api/static/css/main.98df29f2.chunk.css"
   },
   {
@@ -244,8 +244,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/how-to-use-the-go-api/static/js/9.0febed63.chunk.js"
   },
   {
-    "revision": "a9f3962afc930a68fa02",
-    "url": "/how-to-use-the-go-api/static/js/main.51b3ffcf.chunk.js"
+    "revision": "88eb43ef101010f03283",
+    "url": "/how-to-use-the-go-api/static/js/main.fb903883.chunk.js"
   },
   {
     "revision": "98d5370ae17fa8ef2761",
