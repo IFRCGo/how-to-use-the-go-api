@@ -3,8 +3,8 @@
     "static/js/0.507378eb.chunk.js": "/how-to-use-the-go-api/static/js/0.507378eb.chunk.js",
     "static/js/0.507378eb.chunk.js.map": "/how-to-use-the-go-api/static/js/0.507378eb.chunk.js.map",
     "main.css": "/how-to-use-the-go-api/static/css/main.98df29f2.chunk.css",
-    "main.js": "/how-to-use-the-go-api/static/js/main.3509385e.chunk.js",
-    "main.js.map": "/how-to-use-the-go-api/static/js/main.3509385e.chunk.js.map",
+    "main.js": "/how-to-use-the-go-api/static/js/main.90fe3617.chunk.js",
+    "main.js.map": "/how-to-use-the-go-api/static/js/main.90fe3617.chunk.js.map",
     "polyfills-css-shim.js": "/how-to-use-the-go-api/static/js/polyfills-css-shim.b26c965c.chunk.js",
     "polyfills-css-shim.js.map": "/how-to-use-the-go-api/static/js/polyfills-css-shim.b26c965c.chunk.js.map",
     "polyfills-dom.js": "/how-to-use-the-go-api/static/js/polyfills-dom.a8715359.chunk.js",
@@ -12,8 +12,8 @@
     "runtime-main.js": "/how-to-use-the-go-api/static/js/runtime-main.e0f1dfff.js",
     "runtime-main.js.map": "/how-to-use-the-go-api/static/js/runtime-main.e0f1dfff.js.map",
     "static/css/5.8921c4c4.chunk.css": "/how-to-use-the-go-api/static/css/5.8921c4c4.chunk.css",
-    "static/js/5.e26dea9a.chunk.js": "/how-to-use-the-go-api/static/js/5.e26dea9a.chunk.js",
-    "static/js/5.e26dea9a.chunk.js.map": "/how-to-use-the-go-api/static/js/5.e26dea9a.chunk.js.map",
+    "static/js/5.852beff2.chunk.js": "/how-to-use-the-go-api/static/js/5.852beff2.chunk.js",
+    "static/js/5.852beff2.chunk.js.map": "/how-to-use-the-go-api/static/js/5.852beff2.chunk.js.map",
     "static/js/6.13bc2139.chunk.js": "/how-to-use-the-go-api/static/js/6.13bc2139.chunk.js",
     "static/js/6.13bc2139.chunk.js.map": "/how-to-use-the-go-api/static/js/6.13bc2139.chunk.js.map",
     "static/js/7.d217814d.chunk.js": "/how-to-use-the-go-api/static/js/7.d217814d.chunk.js",
@@ -121,11 +121,11 @@
     "static/js/58.a9ebca00.chunk.js": "/how-to-use-the-go-api/static/js/58.a9ebca00.chunk.js",
     "static/js/58.a9ebca00.chunk.js.map": "/how-to-use-the-go-api/static/js/58.a9ebca00.chunk.js.map",
     "index.html": "/how-to-use-the-go-api/index.html",
-    "precache-manifest.33ab1faf1adb888233f762e5f8b039bf.js": "/how-to-use-the-go-api/precache-manifest.33ab1faf1adb888233f762e5f8b039bf.js",
+    "precache-manifest.3267f13610dfc8c459f50b21e6ad72fa.js": "/how-to-use-the-go-api/precache-manifest.3267f13610dfc8c459f50b21e6ad72fa.js",
     "service-worker.js": "/how-to-use-the-go-api/service-worker.js",
     "static/css/5.8921c4c4.chunk.css.map": "/how-to-use-the-go-api/static/css/5.8921c4c4.chunk.css.map",
     "static/css/main.98df29f2.chunk.css.map": "/how-to-use-the-go-api/static/css/main.98df29f2.chunk.css.map",
-    "static/js/5.e26dea9a.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/5.e26dea9a.chunk.js.LICENSE.txt",
+    "static/js/5.852beff2.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/5.852beff2.chunk.js.LICENSE.txt",
     "static/js/53.62a77173.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/53.62a77173.chunk.js.LICENSE.txt",
     "static/js/58.a9ebca00.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/58.a9ebca00.chunk.js.LICENSE.txt",
     "static/js/polyfills-dom.a8715359.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/polyfills-dom.a8715359.chunk.js.LICENSE.txt"
@@ -133,8 +133,8 @@
   "entrypoints": [
     "static/js/runtime-main.e0f1dfff.js",
     "static/css/5.8921c4c4.chunk.css",
-    "static/js/5.e26dea9a.chunk.js",
+    "static/js/5.852beff2.chunk.js",
     "static/css/main.98df29f2.chunk.css",
-    "static/js/main.3509385e.chunk.js"
+    "static/js/main.90fe3617.chunk.js"
   ]
 }

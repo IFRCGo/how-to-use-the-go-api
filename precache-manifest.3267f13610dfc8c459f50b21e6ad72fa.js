@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "10d827fc137fbd3ef8a271c8f72bb0bf",
+    "revision": "abc7e28492ee5fe3254c99e15b38a7a3",
     "url": "/how-to-use-the-go-api/index.html"
   },
   {
-    "revision": "f727d44de7aad10495d6",
+    "revision": "e04fd7186bd57a991973",
     "url": "/how-to-use-the-go-api/static/css/5.8921c4c4.chunk.css"
   },
   {
-    "revision": "d3f19bbcff3faddb297b",
+    "revision": "b1da9c6660a2ee7420d8",
     "url": "/how-to-use-the-go-api/static/css/main.98df29f2.chunk.css"
   },
   {
@@ -176,12 +176,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/how-to-use-the-go-api/static/js/49.e34c18fb.chunk.js"
   },
   {
-    "revision": "f727d44de7aad10495d6",
-    "url": "/how-to-use-the-go-api/static/js/5.e26dea9a.chunk.js"
+    "revision": "e04fd7186bd57a991973",
+    "url": "/how-to-use-the-go-api/static/js/5.852beff2.chunk.js"
   },
   {
     "revision": "b94dac5ae7d568c487773167bf54eb30",
-    "url": "/how-to-use-the-go-api/static/js/5.e26dea9a.chunk.js.LICENSE.txt"
+    "url": "/how-to-use-the-go-api/static/js/5.852beff2.chunk.js.LICENSE.txt"
   },
   {
     "revision": "dcf94f52d44f54535b8d",
@@ -244,8 +244,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/how-to-use-the-go-api/static/js/9.0febed63.chunk.js"
   },
   {
-    "revision": "d3f19bbcff3faddb297b",
-    "url": "/how-to-use-the-go-api/static/js/main.3509385e.chunk.js"
+    "revision": "b1da9c6660a2ee7420d8",
+    "url": "/how-to-use-the-go-api/static/js/main.90fe3617.chunk.js"
   },
   {
     "revision": "98d5370ae17fa8ef2761",
