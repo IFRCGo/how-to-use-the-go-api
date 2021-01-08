@@ -31,12 +31,12 @@ const App: React.FC = () => {
                 <IonSplitPane contentId="main">
                     <Menu />
                     <IonRouterOutlet id="main">
-                        <Route
-                            path="/how-to-use-the-go-api/"
-                            component={Page}
+                        <Route path="/how-to-use-the-go-api" component={Page} />
+                        <Redirect
                             exact
+                            from="/"
+                            to="/how-to-use-the-go-api#example1"
                         />
-                        <Redirect exact from="/" to="/how-to-use-the-go-api" />
                     </IonRouterOutlet>
                 </IonSplitPane>
             </IonReactRouter>

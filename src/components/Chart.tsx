@@ -7,9 +7,7 @@ import "./Chart.scss";
 declare var mpld3: any;
 
 interface Project {
-    id: number;
-    name: string;
-    primary_sector_display: string;
+    [key: string]: string;
 }
 
 interface Dataset {
@@ -26,10 +24,16 @@ interface Data {
 }
 
 interface ChartProps {
+    code: any;
+    api: any;
     selectedLanguage: string;
 }
 
-export const Chart: React.FC<ChartProps> = ({ selectedLanguage }) => {
+export const Chart: React.FC<ChartProps> = ({
+    code,
+    api,
+    selectedLanguage,
+}) => {
     const [projects, setProjects] = useState([]);
     const [data, setData] = useState({});
 
@@ -51,28 +55,22 @@ export const Chart: React.FC<ChartProps> = ({ selectedLanguage }) => {
         "rgba(255, 159, 64, 1)",
     ];
 
-    const options = {
-        scales: {
-            yAxes: [
-                {
-                    ticks: {
-                        beginAtZero: true,
-                    },
-                },
-            ],
-        },
-    };
-
     const fetchProjects = () => {
-        fetch("https://goadmin.ifrc.org/api/v2/project/?country=NPL")
+        fetch(api.url)
             .then(response => response.json())
             .then(data => {
                 setProjects(data.results);
-                setData(getDataFromProjects(projects));
+                setData(
+                    getDataFromProjects(
+                        projects,
+                        code[languages[2]].label,
+                        code[languages[2]].key
+                    )
+                );
             });
     };
 
-    useEffect(fetchProjects, [projects.length]);
+    useEffect(fetchProjects, [code]);
     useEffect(() => {
         const pythonChartData = {
             data01: [
@@ -239,12 +237,16 @@ export const Chart: React.FC<ChartProps> = ({ selectedLanguage }) => {
         loadPythonChart(pythonChartData, pythonChartAxes);
     }, [selectedLanguage]);
 
-    const getDataFromProjects = (projects: Project[]) => {
+    const getDataFromProjects = (
+        projects: Project[],
+        label: string,
+        key: string
+    ) => {
         const data: Data = {
             labels: [],
             datasets: [
                 {
-                    label: "# of Projects",
+                    label: label,
                     data: [],
                     backgroundColor: [],
                     borderColor: [],
@@ -254,14 +256,12 @@ export const Chart: React.FC<ChartProps> = ({ selectedLanguage }) => {
         };
 
         projects.forEach(project => {
-            const dataIndex = data.labels.indexOf(
-                project.primary_sector_display
-            );
+            const dataIndex = data.labels.indexOf(project[key]);
 
             if (dataIndex >= 0) {
                 data.datasets[0].data[dataIndex] += 1;
             } else {
-                data.labels.push(project.primary_sector_display);
+                data.labels.push(project[key]);
                 data.datasets[0].data.push(1);
                 data.datasets[0].backgroundColor = backgroundColors.slice(
                     0,
@@ -292,7 +292,7 @@ export const Chart: React.FC<ChartProps> = ({ selectedLanguage }) => {
                     </IonNote>
                 );
             case languages[2]:
-                return <Bar data={data} options={options} />;
+                return <Bar data={data} options={code[languages[2]].options} />;
             case languages[3]:
                 return <div id="python-chart"></div>;
             default:
