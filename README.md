@@ -49,9 +49,10 @@ interface.
 
 ## Todos
 
-1. The code used to actually draw the chart on the interface should be
+1. ~~The code used to actually draw the chart on the interface should be
    incorporated into [`snippets.json`](/src/assets/snippets.json). The current
-   implementation is hardcoded as native react functions which is not scalable.
+   implementation is hardcoded as native react functions which is not
+   scalable.~~
 2. Move the PowerBI example into [`snippets.json`](/src/assets/snippets.json).
    The `/powerbi` folder must be deleted after merging the code to avoid
    redundancy.
