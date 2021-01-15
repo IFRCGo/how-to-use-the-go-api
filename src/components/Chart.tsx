@@ -34,7 +34,6 @@ export const Chart: React.FC<ChartProps> = ({
     api,
     selectedLanguage,
 }) => {
-    const [projects, setProjects] = useState([]);
     const [data, setData] = useState({});
 
     const backgroundColors = [
@@ -59,10 +58,9 @@ export const Chart: React.FC<ChartProps> = ({
         fetch(api.url)
             .then(response => response.json())
             .then(data => {
-                setProjects(data.results);
                 setData(
                     getDataFromProjects(
-                        projects,
+                        data.results,
                         code[languages[2]].label,
                         code[languages[2]].key
                     )
@@ -70,159 +68,30 @@ export const Chart: React.FC<ChartProps> = ({
             });
     };
 
-    useEffect(fetchProjects, [code]);
+    useEffect(fetchProjects, [api.url]);
     useEffect(() => {
-        const pythonChartData = {
-            data01: [
-                [-0.4, 0.0, 1.6],
-                [0.4, 0.0, 2.4],
-                [0.4, 2.0, 2.4],
-                [-0.4, 2.0, 1.6],
-            ],
-            data03: [
-                [2.6, 0.0],
-                [3.4, 0.0],
-                [3.4, 1.0],
-                [2.6, 1.0],
-            ],
-            data02: [
-                [0.6, 0.0],
-                [1.4, 0.0],
-                [1.4, 10.0],
-                [0.6, 10.0],
-            ],
-        };
-
-        const pythonChartAxes = [
-            {
-                images: [],
-                sharey: [],
-                texts: [],
-                zoomable: true,
-                markers: [],
-                collections: [],
-                bbox: [0.125, 0.11, 0.775, 0.77],
-                xlim: [-0.59, 3.59],
-                paths: [
-                    {
-                        pathcodes: ["M", "L", "L", "L", "Z"],
-                        xindex: 0,
-                        yindex: 1,
-                        facecolor: "rgba(255, 99, 132, 0.2)",
-                        data: "data01",
-                        alpha: 1,
-                        edgewidth: 1.0,
-                        id: "el45167140343872475880",
-                        edgecolor: "rgba(255, 99, 132, 1)",
-                        dasharray: "none",
-                        coordinates: "data",
-                        zorder: 1,
-                    },
-                    {
-                        pathcodes: ["M", "L", "L", "L", "Z"],
-                        xindex: 0,
-                        yindex: 1,
-                        facecolor: "rgba(54, 162, 235, 0.2)",
-                        data: "data02",
-                        alpha: 1,
-                        edgewidth: 1.0,
-                        id: "el45167140343872475320",
-                        edgecolor: "rgba(54, 162, 235, 1)",
-                        dasharray: "none",
-                        coordinates: "data",
-                        zorder: 1,
-                    },
-                    {
-                        pathcodes: ["M", "L", "L", "L", "Z"],
-                        xindex: 2,
-                        yindex: 1,
-                        facecolor: "rgba(255, 206, 86, 0.2)",
-                        data: "data01",
-                        alpha: 1,
-                        edgewidth: 1.0,
-                        id: "el45167140343872476720",
-                        edgecolor: "rgba(255, 206, 86, 1)",
-                        dasharray: "none",
-                        coordinates: "data",
-                        zorder: 1,
-                    },
-                    {
-                        pathcodes: ["M", "L", "L", "L", "Z"],
-                        xindex: 0,
-                        yindex: 1,
-                        facecolor: "rgba(75, 192, 192, 0.2)",
-                        data: "data03",
-                        alpha: 1,
-                        edgewidth: 1.0,
-                        id: "el45167140343872477560",
-                        edgecolor: "rgba(75, 192, 192, 1)",
-                        dasharray: "none",
-                        coordinates: "data",
-                        zorder: 1,
-                    },
-                ],
-                xdomain: [-0.59, 3.59],
-                axesbgalpha: null,
-                axes: [
-                    {
-                        fontsize: 10.0,
-                        grid: {
-                            gridOn: false,
-                        },
-                        tickvalues: [0.0, 1.0, 2.0, 3.0],
-                        tickformat: [
-                            "CEA",
-                            "Health",
-                            "WASH",
-                            "NS Strengthening",
-                        ],
-                        tickcolor: "red",
-                        visible: true,
-                        nticks: 4,
-                        position: "bottom",
-                        tickformat_formatter: "fixed",
-                        scale: "linear",
-                    },
-                    {
-                        fontsize: 10.0,
-                        grid: {
-                            gridOn: false,
-                        },
-                        tickvalues: null,
-                        tickformat: null,
-                        tickcolor: "#ffff00",
-                        visible: true,
-                        nticks: 7,
-                        position: "left",
-                        tickformat_formatter: "",
-                        scale: "linear",
-                    },
-                ],
-                yscale: "linear",
-                lines: [],
-                axesbg: "transparent",
-                sharex: [],
-                ydomain: [0.0, 10.5],
-                xscale: "linear",
-                id: "el45167140343846732296",
-                ylim: [0.0, 10.5],
-            },
-        ];
+        const pythonChartData = code[languages[3]].data;
+        const pythonChartAxes = code[languages[3]].axes;
 
         const loadPythonChart = (data: any, axes: any) => {
             if (document.querySelector("#python-chart")) {
-                mpld3.draw_figure("python-chart", {
-                    width: 600.0,
-                    height: 300.0,
-                    data,
-                    axes,
-                    id: "python-chart",
-                    plugins: [
-                        { type: "reset" },
-                        { button: true, type: "zoom", enabled: false },
-                        { button: true, type: "boxzoom", enabled: false },
-                    ],
-                });
+                mpld3.draw_figure(
+                    "python-chart",
+                    {
+                        width: 600.0,
+                        height: 300.0,
+                        data,
+                        axes,
+                        id: "python-chart",
+                        plugins: [
+                            { type: "reset" },
+                            { button: true, type: "zoom", enabled: false },
+                            { button: true, type: "boxzoom", enabled: false },
+                        ],
+                    },
+                    null,
+                    true
+                );
                 document.querySelector(".mpld3-resetbutton")?.dispatchEvent(
                     new MouseEvent("click", {
                         view: window,
@@ -235,7 +104,7 @@ export const Chart: React.FC<ChartProps> = ({
         };
 
         loadPythonChart(pythonChartData, pythonChartAxes);
-    }, [selectedLanguage]);
+    }, [code, selectedLanguage]);
 
     const getDataFromProjects = (
         projects: Project[],
