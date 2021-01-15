@@ -9,7 +9,6 @@ import {
     IonMenuToggle,
     IonNote,
 } from "@ionic/react";
-
 import React from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -18,6 +17,7 @@ import {
     documentTextOutline,
     documentTextSharp,
 } from "ionicons/icons";
+import snippets from "../assets/snippets.json";
 import "./Menu.css";
 
 const Menu: React.FC = () => {
@@ -33,24 +33,30 @@ const Menu: React.FC = () => {
                     </IonListHeader>
                     <IonNote></IonNote>
                     <IonMenuToggle key={0} autoHide={false}>
-                        <IonItem
-                            className={
-                                location.pathname === "/how-to-use-the-go-api/"
-                                    ? "selected"
-                                    : ""
-                            }
-                            routerLink="/how-to-use-the-go-api/"
-                            routerDirection="none"
-                            lines="none"
-                            detail={false}
-                        >
-                            <IonIcon
-                                slot="start"
-                                ios={codeSlashOutline}
-                                md={codeSlashSharp}
-                            />
-                            <IonLabel>Example 1: Projects per Sector</IonLabel>
-                        </IonItem>
+                        {snippets.map(snippet => (
+                            <IonItem
+                                className={
+                                    location.hash === "#example" + snippet.id
+                                        ? "selected"
+                                        : ""
+                                }
+                                routerLink={
+                                    "/how-to-use-the-go-api#example" +
+                                    snippet.id
+                                }
+                                routerDirection="none"
+                                lines="none"
+                                detail={false}
+                                key={snippet.id}
+                            >
+                                <IonIcon
+                                    slot="start"
+                                    ios={codeSlashOutline}
+                                    md={codeSlashSharp}
+                                />
+                                <IonLabel>{snippet.title}</IonLabel>
+                            </IonItem>
+                        ))}
                         <IonItem
                             href="https://goadmin.ifrc.org/docs"
                             lines="none"
