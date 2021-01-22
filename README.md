@@ -47,18 +47,6 @@ the contents of this folder should be merged into
 `/public` contains the HTML and static assets which are used in the Ionic-React
 interface.
 
-## Todos
-
-1. ~~The code used to actually draw the chart on the interface should be
-   incorporated into [`snippets.json`](/src/assets/snippets.json). The current
-   implementation is hardcoded as native react functions which is not
-   scalable.~~
-2. Move the PowerBI example into [`snippets.json`](/src/assets/snippets.json).
-   The `/powerbi` folder must be deleted after merging the code to avoid
-   redundancy.
-3. Allow for a detailed description for each example. This may be possible using
-   markdown instead of string text.
-
 ## Deployment
 
 To publish the latest code,
