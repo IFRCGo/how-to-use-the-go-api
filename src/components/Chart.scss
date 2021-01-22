@@ -2,6 +2,11 @@
     height: 300px;
     width: 600px;
 
+    .ion-image {
+        object-fit: contain;
+        height: 100%;
+    }
+
     div#python-chart {
         .mpld3-xaxis,
         .mpld3-yaxis {
