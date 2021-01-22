@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IonNote } from "@ionic/react";
+import { IonImg, IonNote } from "@ionic/react";
 import languages from "../assets/languages.json";
 import "./Chart.scss";
 
@@ -149,21 +149,37 @@ export const Chart: React.FC<ChartProps> = ({
     const renderChart = () => {
         switch (selectedLanguage) {
             case languages[0]:
-                return (
+                return code[languages[0]] ? (
+                    <IonImg src={code[languages[0]]} className="ion-image" />
+                ) : (
                     <IonNote className="ion-margin ion-padding">
                         Chart for PowerBI is not available
                     </IonNote>
                 );
             case languages[1]:
-                return (
+                return code[languages[1]] ? (
+                    <IonImg src={code[languages[1]]} className="ion-image" />
+                ) : (
                     <IonNote className="ion-margin ion-padding">
                         Chart for Tableau is not available
                     </IonNote>
                 );
             case languages[2]:
-                return <Bar data={data} options={code[languages[2]].options} />;
+                return code[languages[2]] ? (
+                    <Bar data={data} options={code[languages[2]].options} />
+                ) : (
+                    <IonNote className="ion-margin ion-padding">
+                        Chart for JavaScript is not available
+                    </IonNote>
+                );
             case languages[3]:
-                return <div id="python-chart"></div>;
+                return code[languages[3]] ? (
+                    <div id="python-chart"></div>
+                ) : (
+                    <IonNote className="ion-margin ion-padding">
+                        Chart for Python is not available
+                    </IonNote>
+                );
             default:
                 return (
                     <IonNote className="ion-margin ion-padding">

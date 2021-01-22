@@ -35,7 +35,10 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
                 })}
             </IonHeader>
             <IonContent className="code-snippet">
-                <CodeSnippet code={snippet[selectedLanguage]}></CodeSnippet>
+                <CodeSnippet
+                    code={snippet[selectedLanguage]}
+                    selectedLanguage={selectedLanguage}
+                ></CodeSnippet>
             </IonContent>
         </IonContent>
     );
