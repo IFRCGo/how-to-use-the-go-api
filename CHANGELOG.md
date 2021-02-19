@@ -1,4 +1,14 @@
-# 0.2.0 (2021-02-19)
+## [0.2.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.0...v0.2.1) (2021-02-19)
+
+
+### Bug Fixes
+
+* add build to prettier ignore ([55186f3](https://github.com/IFRCGo/how-to-use-the-go-api/commit/55186f36f405123f86538fee3d4a432453e0c9e5))
+* update readme - dummy commit to test ci ([118faf6](https://github.com/IFRCGo/how-to-use-the-go-api/commit/118faf644832cf8f46b4e065c089fc6535492735))
+
+
+
+# [0.2.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/dd87cc3429b2dd86fb22962abdc8bcf543641efe...v0.2.0) (2021-02-19)
 
 
 ### Bug Fixes
