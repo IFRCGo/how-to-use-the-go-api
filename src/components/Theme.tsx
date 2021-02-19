@@ -1,12 +1,17 @@
 import { IonItem, IonLabel, IonList, IonToggle } from "@ionic/react";
-import React, { useState } from "react";
+import React from "react";
 import "./Theme.scss";
 
-export const Theme: React.FC = () => {
-    const isDarkPreferred = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches;
-    const [checked, setChecked] = useState(isDarkPreferred);
-    document.body.classList.toggle("dark", checked);
+interface ThemeProps {
+    isDarkThemeChecked: boolean;
+    setDarkThemeChecked: (setDarkTheme: boolean) => void;
+}
+
+export const Theme: React.FC<ThemeProps> = ({
+    isDarkThemeChecked,
+    setDarkThemeChecked,
+}) => {
+    document.body.classList.toggle("dark", isDarkThemeChecked);
 
     return (
         <IonList>
@@ -14,13 +19,13 @@ export const Theme: React.FC = () => {
                 <IonLabel>Dark Theme</IonLabel>
                 <IonToggle
                     slot="end"
-                    checked={checked}
+                    checked={isDarkThemeChecked}
                     onIonChange={event => {
                         document.body.classList.toggle(
                             "dark",
                             event.detail.checked
                         );
-                        setChecked(event.detail.checked);
+                        setDarkThemeChecked(event.detail.checked);
                     }}
                 ></IonToggle>
             </IonItem>
