@@ -63,5 +63,6 @@
     "node-sass": "^4.14.1"
   },
   "description": "Examples and usage instructions for the GO API using different tools / languages",
-  "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/"
+  "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/",
+  "pre-commit": "lint"
 }
