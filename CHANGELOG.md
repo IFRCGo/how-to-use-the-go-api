@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.1...v0.2.2) (2021-02-19)
+
+
+### Bug Fixes
+
+* deploy and build workflows ([bc21c84](https://github.com/IFRCGo/how-to-use-the-go-api/commit/bc21c84dbcd90e0189837667491c7287ce6b8f91))
+
+
+
 ## [0.2.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.0...v0.2.1) (2021-02-19)
 
 
