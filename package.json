@@ -1,62 +1,62 @@
 {
-    "name": "how-to-use-the-go-api",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@capacitor/core": "2.4.2",
-        "@ionic/react": "^5.0.7",
-        "@ionic/react-router": "^5.0.7",
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.4.0",
-        "@testing-library/user-event": "^8.0.3",
-        "@types/jest": "^24.0.25",
-        "@types/node": "^12.12.24",
-        "@types/react": "^16.9.17",
-        "@types/react-dom": "^16.9.4",
-        "@types/react-router": "^5.1.4",
-        "@types/react-router-dom": "^5.1.3",
-        "chart.js": "^2.9.4",
-        "codemirror": "^5.59.2",
-        "gh-pages": "^3.1.0",
-        "ionicons": "^5.0.0",
-        "react": "^16.13.0",
-        "react-chartjs-2": "^2.11.1",
-        "react-codemirror2": "^7.2.1",
-        "react-dom": "^16.13.0",
-        "react-markdown": "^5.0.3",
-        "react-router": "^5.1.2",
-        "react-router-dom": "^5.1.2",
-        "react-scripts": "3.4.0",
-        "typescript": "3.8.3"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@capacitor/cli": "2.4.2",
-        "@ionic/lab": "3.2.9",
-        "node-sass": "^4.14.1"
-    },
-    "description": "Examples and usage instructions for the GO API using different tools / languages",
-    "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/"
+  "name": "how-to-use-the-go-api",
+  "version": "0.2.0",
+  "private": true,
+  "dependencies": {
+    "@capacitor/core": "2.4.2",
+    "@ionic/react": "^5.0.7",
+    "@ionic/react-router": "^5.0.7",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^8.0.3",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^12.12.24",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router": "^5.1.4",
+    "@types/react-router-dom": "^5.1.3",
+    "chart.js": "^2.9.4",
+    "codemirror": "^5.59.2",
+    "gh-pages": "^3.1.0",
+    "ionicons": "^5.0.0",
+    "react": "^16.13.0",
+    "react-chartjs-2": "^2.11.1",
+    "react-codemirror2": "^7.2.1",
+    "react-dom": "^16.13.0",
+    "react-markdown": "^5.0.3",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@capacitor/cli": "2.4.2",
+    "@ionic/lab": "3.2.9",
+    "node-sass": "^4.14.1"
+  },
+  "description": "Examples and usage instructions for the GO API using different tools / languages",
+  "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/"
 }
