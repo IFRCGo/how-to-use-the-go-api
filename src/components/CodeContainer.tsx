@@ -1,8 +1,8 @@
-import React from "react";
-import { IonButton, IonContent, IonHeader } from "@ionic/react";
-import { CodeSnippet } from "./CodeSnippet";
-import languages from "../assets/languages.json";
-import "./CodeContainer.scss";
+import React from 'react';
+import { IonButton, IonContent, IonHeader } from '@ionic/react';
+import { CodeSnippet } from './CodeSnippet';
+import languages from '../assets/languages.json';
+import './CodeContainer.scss';
 
 interface CodeContainerProps {
     snippet: { [key: string]: any };
@@ -18,7 +18,7 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
     isDarkThemeChecked,
 }) => {
     return (
-        <IonContent className="code-container" scrollY={false}>
+        <IonContent className='code-container' scrollY={false}>
             <IonHeader>
                 {languages.map((language, languageIndex) => {
                     return (
@@ -26,8 +26,8 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
                             key={languageIndex}
                             fill={
                                 selectedLanguage === language
-                                    ? "solid"
-                                    : "clear"
+                                    ? 'solid'
+                                    : 'clear'
                             }
                             onClick={() => setSelectedLanguage(language)}
                         >
@@ -36,7 +36,7 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
                     );
                 })}
             </IonHeader>
-            <IonContent className="code-snippet">
+            <IonContent className='code-snippet'>
                 <CodeSnippet
                     code={snippet[selectedLanguage]}
                     selectedLanguage={selectedLanguage}

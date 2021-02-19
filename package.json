@@ -19,6 +19,9 @@
     "codemirror": "^5.59.2",
     "gh-pages": "^3.1.0",
     "ionicons": "^5.0.0",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
+    "prettier": "^2.2.1",
     "react": "^16.13.0",
     "react-chartjs-2": "^2.11.1",
     "react-codemirror2": "^7.2.1",
@@ -32,10 +35,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "prettier --check '**/*.{md,js,jsx,ts,tsx,css,scss,html,yml,json,css}'",
+    "lint:fix": "npm run lint -- --write"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,5 +63,6 @@
     "node-sass": "^4.14.1"
   },
   "description": "Examples and usage instructions for the GO API using different tools / languages",
-  "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/"
+  "homepage": "https://ifrcgo.github.io/how-to-use-the-go-api/",
+  "pre-commit": "lint"
 }
