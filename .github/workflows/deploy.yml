@@ -1,0 +1,25 @@
+name: C.I. Deploy
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+
+            - name: Deploy
+              if:
+                  github.event_name == 'push' && startsWith(github.event.ref,
+                  'refs/tags/v')
+              uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: build
+                  CLEAN: true

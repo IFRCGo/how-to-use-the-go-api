@@ -3,8 +3,6 @@ name: C.I. Workflow
 on:
     push:
         branches: [master]
-        tags:
-            - 'v*'
         paths-ignore:
             - './package.json'
             - './CHANGELOG.md'
@@ -12,7 +10,7 @@ on:
         branches: [master]
 
 jobs:
-    build-and-deploy:
+    install-build-test-bump:
         runs-on: ubuntu-latest
 
         strategy:
@@ -46,14 +44,3 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   git-message: 'chore(release): {version}'
                   release-count: 10
-
-            - name: Deploy
-              if:
-                  github.event_name == 'push' && startsWith(github.event.ref,
-                  'refs/tags/v')
-              uses: JamesIves/github-pages-deploy-action@3.7.1
-              with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: build
-                  CLEAN: true
