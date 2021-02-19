@@ -1,8 +1,6 @@
 # How to use the [go-api](https://github.com/IFRCGo/go-api)?
 
-This repository contains a web app which showcases examples of code. Each
-example demonstrates how to use the [go-api](https://github.com/IFRCGo/go-api)
-to build graphs. Graphs are constructed using code in Python, JavaScript,
+This repository contains a web app which showcases examples of code. Examples are in Python, JavaScript,
 PowerBI and Tableau.
 
 ## Requirements
