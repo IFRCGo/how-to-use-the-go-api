@@ -8,7 +8,7 @@ import {
     IonTitle,
     IonToolbar,
 } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
 import { CodeContainer } from "../components/CodeContainer";
 import { Theme } from "../components/Theme";
 import { Chart } from "../components/Chart";
@@ -27,6 +27,9 @@ const Page: React.FC = () => {
     const [selectedLanguage, setSelectedLanguage] = React.useState(
         languages[0]
     );
+    const isDarkPreferred = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches;
+    const [isDarkThemeChecked, setDarkThemeChecked] = useState(isDarkPreferred);
 
     return (
         <IonPage>
@@ -37,7 +40,10 @@ const Page: React.FC = () => {
                     </IonButtons>
                     <IonTitle>{name}</IonTitle>
                     <div slot="end">
-                        <Theme />
+                        <Theme
+                            isDarkThemeChecked={isDarkThemeChecked}
+                            setDarkThemeChecked={setDarkThemeChecked}
+                        />
                     </div>
                 </IonToolbar>
             </IonHeader>
@@ -63,6 +69,7 @@ const Page: React.FC = () => {
                         snippet={snippet.snippet}
                         selectedLanguage={selectedLanguage}
                         setSelectedLanguage={setSelectedLanguage}
+                        isDarkThemeChecked={isDarkThemeChecked}
                     />
                 </div>
             </IonContent>

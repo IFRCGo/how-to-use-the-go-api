@@ -8,12 +8,14 @@ interface CodeContainerProps {
     snippet: { [key: string]: any };
     selectedLanguage: string;
     setSelectedLanguage: (language: string) => void;
+    isDarkThemeChecked: boolean;
 }
 
 export const CodeContainer: React.FC<CodeContainerProps> = ({
     snippet,
     selectedLanguage,
     setSelectedLanguage,
+    isDarkThemeChecked,
 }) => {
     return (
         <IonContent className="code-container" scrollY={false}>
@@ -38,6 +40,7 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
                 <CodeSnippet
                     code={snippet[selectedLanguage]}
                     selectedLanguage={selectedLanguage}
+                    isDarkThemeChecked={isDarkThemeChecked}
                 ></CodeSnippet>
             </IonContent>
         </IonContent>
