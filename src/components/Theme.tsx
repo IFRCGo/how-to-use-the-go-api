@@ -1,6 +1,6 @@
-import { IonItem, IonLabel, IonList, IonToggle } from "@ionic/react";
-import React from "react";
-import "./Theme.scss";
+import { IonItem, IonLabel, IonList, IonToggle } from '@ionic/react';
+import React from 'react';
+import './Theme.scss';
 
 interface ThemeProps {
     isDarkThemeChecked: boolean;
@@ -11,18 +11,18 @@ export const Theme: React.FC<ThemeProps> = ({
     isDarkThemeChecked,
     setDarkThemeChecked,
 }) => {
-    document.body.classList.toggle("dark", isDarkThemeChecked);
+    document.body.classList.toggle('dark', isDarkThemeChecked);
 
     return (
         <IonList>
-            <IonItem lines="none">
+            <IonItem lines='none'>
                 <IonLabel>Dark Theme</IonLabel>
                 <IonToggle
-                    slot="end"
+                    slot='end'
                     checked={isDarkThemeChecked}
-                    onIonChange={event => {
+                    onIonChange={(event) => {
                         document.body.classList.toggle(
-                            "dark",
+                            'dark',
                             event.detail.checked
                         );
                         setDarkThemeChecked(event.detail.checked);

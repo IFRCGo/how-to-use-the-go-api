@@ -39,7 +39,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "prettier --check '**/*.{md,js,ts,scss,html}'",
+    "lint": "prettier --check '**/*.{md,js,jsx,ts,tsx,css,scss,html,yml,json,css}'",
     "lint:fix": "npm run lint -- --write"
   },
   "eslintConfig": {
