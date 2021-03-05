@@ -41,7 +41,7 @@ jobs:
             - name: Bump version and push tag
               if:
                   github.event_name == 'push' && !startsWith(github.event.ref,
-                  "refs/tags/v")
+                  'refs/tags/v')
               uses: TriPSs/conventional-changelog-action@v3
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
             - name: Deploy
               if:
                   github.event_name == 'create' && startsWith(github.event.ref,
-                  "refs/tags/v")
+                  'refs/tags/v')
               uses: JamesIves/github-pages-deploy-action@3.7.1
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
