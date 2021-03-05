@@ -17,7 +17,7 @@ import {
     documentTextOutline,
     documentTextSharp,
 } from 'ionicons/icons';
-import snippets from '../assets/snippets.json';
+import examples from '../assets/examples.json';
 import './Menu.css';
 
 const Menu: React.FC = () => {
@@ -33,28 +33,28 @@ const Menu: React.FC = () => {
                     </IonListHeader>
                     <IonNote></IonNote>
                     <IonMenuToggle key={0} autoHide={false}>
-                        {snippets.map((snippet) => (
+                        {examples.map((example) => (
                             <IonItem
                                 className={
-                                    location.hash === '#example' + snippet.id
+                                    location.hash === '#example' + example.id
                                         ? 'selected'
                                         : ''
                                 }
                                 routerLink={
                                     '/how-to-use-the-go-api#example' +
-                                    snippet.id
+                                    example.id
                                 }
                                 routerDirection='none'
                                 lines='none'
                                 detail={false}
-                                key={snippet.id}
+                                key={example.id}
                             >
                                 <IonIcon
                                     slot='start'
                                     ios={codeSlashOutline}
                                     md={codeSlashSharp}
                                 />
-                                <IonLabel>{snippet.title}</IonLabel>
+                                <IonLabel>{example.title}</IonLabel>
                             </IonItem>
                         ))}
                         <IonItem

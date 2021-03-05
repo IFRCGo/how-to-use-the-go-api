@@ -11,19 +11,19 @@ import {
 import React, { useState } from 'react';
 import { CodeContainer } from '../components/CodeContainer';
 import { Theme } from '../components/Theme';
-import { Chart } from '../components/Chart';
-import snippets from '../assets/snippets.json';
+import { ChartContainer } from '../components/ChartContainer';
+import examples from '../assets/examples.json';
 import languages from '../assets/languages.json';
 import { useLocation } from 'react-router-dom';
 import './Page.css';
 
 const Page: React.FC = () => {
     const location = useLocation();
-    const snippetIndex = snippets.findIndex(
-        (snippet) => '#example' + snippet.id === location.hash
+    const exampleIndex = examples.findIndex(
+        (example) => '#example' + example.id === location.hash
     );
-    const snippet = snippetIndex >= 0 ? snippets[snippetIndex] : snippets[0];
-    const name = snippet.title;
+    const example = exampleIndex >= 0 ? examples[exampleIndex] : examples[0];
+    const name = example.title;
     const [selectedLanguage, setSelectedLanguage] = React.useState(
         languages[0]
     );
@@ -55,18 +55,18 @@ const Page: React.FC = () => {
                     </IonToolbar>
                 </IonHeader>
                 <IonNote className='ion-margin ion-padding'>
-                    {snippet.description}
+                    {example.description}
                 </IonNote>
                 <div className='ion-margin'>
-                    <Chart
-                        code={snippet.code}
-                        api={snippet.api}
+                    <ChartContainer
+                        chart={example.chart}
+                        api={example.api}
                         selectedLanguage={selectedLanguage}
                     />
                 </div>
                 <div className='ion-margin'>
                     <CodeContainer
-                        snippet={snippet.snippet}
+                        code={example.code}
                         selectedLanguage={selectedLanguage}
                         setSelectedLanguage={setSelectedLanguage}
                         isDarkThemeChecked={isDarkThemeChecked}

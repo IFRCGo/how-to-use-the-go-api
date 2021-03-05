@@ -31,7 +31,7 @@ config files.
 
 `/src` contains all the Ionic-React files required to build the app.
 
--   `/src/assets` contains files containing the code snippets and supported
+-   `/src/assets` contains files containing the examples and supported
     languages in JSON format.
 
 `/python` contains the Python implementation of the examples. The python files
@@ -40,7 +40,7 @@ using `python example1.py`.
 
 `/powerbi` contains the PowerBI implementation of the examples. In the future,
 the contents of this folder should be merged into
-[`snippets.json`](/src/assets/snippets.json).
+[`examples.json`](/src/assets/examples.json).
 
 `/public` contains the HTML and static assets which are used in the Ionic-React
 interface.

@@ -1,5 +1,5 @@
 import React from 'react';
-import './CodeSnippet.scss';
+import './CodeViewer.scss';
 import languages from '../assets/languages.json';
 import { IonNote } from '@ionic/react';
 import ReactMarkdown from 'react-markdown';
@@ -10,17 +10,25 @@ import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/python/python';
 
-interface CodeSnippetProps {
+interface CodeViewerProps {
     code: string;
     selectedLanguage: string;
     isDarkThemeChecked: boolean;
 }
 
-export const CodeSnippet: React.FC<CodeSnippetProps> = ({
+export const CodeViewer: React.FC<CodeViewerProps> = ({
     code,
     selectedLanguage,
     isDarkThemeChecked,
 }) => {
+    if (!code) {
+        return (
+            <IonNote className='ion-margin ion-padding'>
+                Code for {selectedLanguage} is not available
+            </IonNote>
+        );
+    }
+
     switch (selectedLanguage) {
         case languages[0]:
             return (
@@ -65,7 +73,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         default:
             return (
                 <IonNote className='ion-margin ion-padding'>
-                    Code not available
+                    Found Unsupported Code
                 </IonNote>
             );
     }

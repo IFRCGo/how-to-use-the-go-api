@@ -1,18 +1,18 @@
 import React from 'react';
 import { IonButton, IonContent, IonHeader } from '@ionic/react';
-import { CodeSnippet } from './CodeSnippet';
+import { CodeViewer } from './CodeViewer';
 import languages from '../assets/languages.json';
 import './CodeContainer.scss';
 
 interface CodeContainerProps {
-    snippet: { [key: string]: any };
+    code: { [key: string]: any };
     selectedLanguage: string;
     setSelectedLanguage: (language: string) => void;
     isDarkThemeChecked: boolean;
 }
 
 export const CodeContainer: React.FC<CodeContainerProps> = ({
-    snippet,
+    code,
     selectedLanguage,
     setSelectedLanguage,
     isDarkThemeChecked,
@@ -36,12 +36,12 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
                     );
                 })}
             </IonHeader>
-            <IonContent className='code-snippet'>
-                <CodeSnippet
-                    code={snippet[selectedLanguage]}
+            <IonContent className='code-viewer'>
+                <CodeViewer
+                    code={code[selectedLanguage]}
                     selectedLanguage={selectedLanguage}
                     isDarkThemeChecked={isDarkThemeChecked}
-                ></CodeSnippet>
+                ></CodeViewer>
             </IonContent>
         </IonContent>
     );

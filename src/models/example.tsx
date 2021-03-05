@@ -1,14 +1,14 @@
-export class Snippet {
+export class Example {
     'id': number;
     'title': string;
     'description': string;
-    'snippet': {
+    'code': {
         'Power BI': string;
         Tableau: string;
         JavaScript: string;
         Python: string;
     };
-    'code': {
+    'chart': {
         'Power BI': string;
         Tableau: string;
         JavaScript: string;
@@ -17,4 +17,5 @@ export class Snippet {
     'api': {
         url: string;
     };
+    'guide': string;
 }
