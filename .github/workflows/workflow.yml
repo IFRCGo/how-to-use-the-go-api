@@ -10,7 +10,7 @@ on:
         branches: [master]
 
 jobs:
-    install-build-test-bump:
+    install-build-test-bump-deploy:
         runs-on: ubuntu-latest
 
         strategy:
@@ -36,11 +36,18 @@ jobs:
               run: npm run test --if-present
 
             - name: Bump version and push tag
-              if:
-                  github.event_name == 'push' && !startsWith(github.event.ref,
-                  'refs/tags/v')
+              if: github.event_name == 'push'
               uses: TriPSs/conventional-changelog-action@v3
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   git-message: 'chore(release): {version}'
                   release-count: 10
+
+            - name: Deploy
+              if: github.event_name == 'push'
+              uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: build
+                  CLEAN: true
