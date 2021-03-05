@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { IonImg, IonNote } from '@ionic/react';
 import languages from '../assets/languages.json';
-import './Chart.scss';
+import './ChartViewer.scss';
 
 declare var mpld3: any;
 
@@ -23,18 +23,18 @@ interface Data {
     datasets: Dataset[];
 }
 
-interface ChartProps {
-    code: any;
+interface ChartViewerProps {
+    chart: any;
     api: any;
     selectedLanguage: string;
 }
 
-export const Chart: React.FC<ChartProps> = ({
-    code,
+export const ChartViewer: React.FC<ChartViewerProps> = ({
+    chart,
     api,
     selectedLanguage,
 }) => {
-    const [data, setData] = useState({});
+    const [data, setData] = useState({} as Data);
 
     const backgroundColors = [
         'rgba(255, 99, 132, 0.2)',
@@ -55,23 +55,32 @@ export const Chart: React.FC<ChartProps> = ({
     ];
 
     const fetchProjects = () => {
-        fetch(api.url)
-            .then((response) => response.json())
-            .then((data) => {
-                setData(
-                    getDataFromProjects(
-                        data.results,
-                        code[languages[2]].label,
-                        code[languages[2]].key
-                    )
-                );
-            });
+        if (
+            chart &&
+            selectedLanguage === languages[2] &&
+            data.datasets.length === 0
+        ) {
+            fetch(api.url)
+                .then((response) => response.json())
+                .then((data) => {
+                    setData(
+                        getDataFromProjects(
+                            data.results,
+                            chart.label,
+                            chart.key
+                        )
+                    );
+                });
+        }
     };
 
-    useEffect(fetchProjects, [api.url]);
+    useEffect(fetchProjects, [api.url, selectedLanguage]);
+
     useEffect(() => {
-        const pythonChartData = code[languages[3]].data;
-        const pythonChartAxes = code[languages[3]].axes;
+        if (!chart) return;
+
+        const pythonChartData = chart.data;
+        const pythonChartAxes = chart.axes;
 
         const loadPythonChart = (data: any, axes: any) => {
             if (document.querySelector('#python-chart')) {
@@ -103,8 +112,9 @@ export const Chart: React.FC<ChartProps> = ({
             }
         };
 
-        loadPythonChart(pythonChartData, pythonChartAxes);
-    }, [code, selectedLanguage]);
+        if (selectedLanguage === languages[3])
+            loadPythonChart(pythonChartData, pythonChartAxes);
+    }, [chart, selectedLanguage]);
 
     const getDataFromProjects = (
         projects: Project[],
@@ -146,48 +156,32 @@ export const Chart: React.FC<ChartProps> = ({
         return data;
     };
 
-    const renderChart = () => {
+    const renderChartViewer = () => {
+        if (!chart) {
+            return (
+                <IonNote className='ion-margin ion-padding'>
+                    Chart for {selectedLanguage} is not available
+                </IonNote>
+            );
+        }
+
         switch (selectedLanguage) {
             case languages[0]:
-                return code[languages[0]] ? (
-                    <IonImg src={code[languages[0]]} className='ion-image' />
-                ) : (
-                    <IonNote className='ion-margin ion-padding'>
-                        Chart for PowerBI is not available
-                    </IonNote>
-                );
+                return <IonImg src={chart} className='ion-image' />;
             case languages[1]:
-                return code[languages[1]] ? (
-                    <IonImg src={code[languages[1]]} className='ion-image' />
-                ) : (
-                    <IonNote className='ion-margin ion-padding'>
-                        Chart for Tableau is not available
-                    </IonNote>
-                );
+                return <IonImg src={chart} className='ion-image' />;
             case languages[2]:
-                return code[languages[2]] ? (
-                    <Bar data={data} options={code[languages[2]].options} />
-                ) : (
-                    <IonNote className='ion-margin ion-padding'>
-                        Chart for JavaScript is not available
-                    </IonNote>
-                );
+                return <Bar data={data} options={chart.options} />;
             case languages[3]:
-                return code[languages[3]] ? (
-                    <div id='python-chart'></div>
-                ) : (
-                    <IonNote className='ion-margin ion-padding'>
-                        Chart for Python is not available
-                    </IonNote>
-                );
+                return <div id='python-chart'></div>;
             default:
                 return (
                     <IonNote className='ion-margin ion-padding'>
-                        Chart not available
+                        Found Unsupported Chart
                     </IonNote>
                 );
         }
     };
 
-    return <div className='chart-container'>{renderChart()}</div>;
+    return renderChartViewer();
 };
