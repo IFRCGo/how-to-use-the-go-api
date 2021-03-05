@@ -4,4 +4,3 @@ package.json
 package-lock.json
 powerbi/
 build/
-.github/workflows/workflow.yml

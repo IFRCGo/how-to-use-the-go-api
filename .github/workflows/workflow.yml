@@ -4,13 +4,10 @@ on:
     push:
         branches: [master]
         paths-ignore:
-            - "./package.json"
-            - "./CHANGELOG.md"
+            - './package.json'
+            - './CHANGELOG.md'
     pull_request:
         branches: [master]
-    create:
-        tags:
-            - "v*"
 
 jobs:
     install-build-test-bump-deploy:
@@ -39,19 +36,15 @@ jobs:
               run: npm run test --if-present
 
             - name: Bump version and push tag
-              if:
-                  github.event_name == 'push' && !startsWith(github.event.ref,
-                  'refs/tags/v')
+              if: github.event_name == 'push'
               uses: TriPSs/conventional-changelog-action@v3
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-                  git-message: "chore(release): {version}"
+                  git-message: 'chore(release): {version}'
                   release-count: 10
 
             - name: Deploy
-              if:
-                  github.event_name == 'create' && startsWith(github.event.ref,
-                  'refs/tags/v')
+              if: github.event_name == 'push'
               uses: JamesIves/github-pages-deploy-action@3.7.1
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
