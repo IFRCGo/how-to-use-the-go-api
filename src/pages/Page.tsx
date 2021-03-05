@@ -15,6 +15,7 @@ import { ChartContainer } from '../components/ChartContainer';
 import examples from '../assets/examples.json';
 import languages from '../assets/languages.json';
 import { useLocation } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import './Page.css';
 
 const Page: React.FC = () => {
@@ -58,19 +59,31 @@ const Page: React.FC = () => {
                     {example.description}
                 </IonNote>
                 <div className='ion-margin'>
-                    <ChartContainer
-                        chart={example.chart}
-                        api={example.api}
-                        selectedLanguage={selectedLanguage}
-                    />
+                    {example.guide && (
+                        <ReactMarkdown
+                            className='ion-padding'
+                            source={example.guide}
+                        />
+                    )}
                 </div>
                 <div className='ion-margin'>
-                    <CodeContainer
-                        code={example.code}
-                        selectedLanguage={selectedLanguage}
-                        setSelectedLanguage={setSelectedLanguage}
-                        isDarkThemeChecked={isDarkThemeChecked}
-                    />
+                    {example.chart && (
+                        <ChartContainer
+                            chart={example.chart}
+                            api={example.api}
+                            selectedLanguage={selectedLanguage}
+                        />
+                    )}
+                </div>
+                <div className='ion-margin'>
+                    {example.code && (
+                        <CodeContainer
+                            code={example.code}
+                            selectedLanguage={selectedLanguage}
+                            setSelectedLanguage={setSelectedLanguage}
+                            isDarkThemeChecked={isDarkThemeChecked}
+                        />
+                    )}
                 </div>
             </IonContent>
         </IonPage>

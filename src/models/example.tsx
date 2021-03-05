@@ -2,19 +2,19 @@ export class Example {
     'id': number;
     'title': string;
     'description': string;
-    'code': {
+    'code'?: {
         'Power BI': string;
         Tableau: string;
         JavaScript: string;
         Python: string;
     };
-    'chart': {
+    'chart'?: {
         'Power BI': string;
         Tableau: string;
         JavaScript: string;
         Python: string;
     };
-    'api': {
+    'api'?: {
         url: string;
     };
     'guide': string;
