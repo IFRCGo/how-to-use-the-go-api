@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.2...v0.3.0) (2021-03-05)
+
+
+### Features
+
+* add auth instructions ([1830b98](https://github.com/IFRCGo/how-to-use-the-go-api/commit/1830b98013e4df89b195643f3914f9c89d267721))
+
+
+
 ## [0.2.2](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.1...v0.2.2) (2021-02-19)
 
 
