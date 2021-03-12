@@ -6,7 +6,14 @@ import './ChartViewer.scss';
 
 declare var mpld3: any;
 
-interface Project {
+interface GoAPIResponse {
+    count: number;
+    next: string;
+    previous: string;
+    results: GoAPIResponseResult[];
+}
+
+interface GoAPIResponseResult {
     [key: string]: string;
 }
 
@@ -54,7 +61,7 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
         'rgba(255, 159, 64, 1)',
     ];
 
-    const fetchProjects = () => {
+    const callGoAPI = () => {
         if (
             chart &&
             selectedLanguage === languages[2] &&
@@ -62,19 +69,11 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
         ) {
             fetch(api.url)
                 .then((response) => response.json())
-                .then((data) => {
-                    setData(
-                        getDataFromProjects(
-                            data.results,
-                            chart.label,
-                            chart.key
-                        )
-                    );
-                });
+                .then(onGoAPIResponse);
         }
     };
 
-    useEffect(fetchProjects, [api.url, selectedLanguage]);
+    useEffect(callGoAPI, [api.url, selectedLanguage]);
 
     useEffect(() => {
         if (!chart) return;
@@ -116,16 +115,25 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
             loadPythonChart(pythonChartData, pythonChartAxes);
     }, [chart, selectedLanguage]);
 
-    const getDataFromProjects = (
-        projects: Project[],
-        label: string,
-        key: string
+    const onGoAPIResponse = (goAPIResponse: GoAPIResponse): void => {
+        const parsedGoAPIResponse = getDataFromResponseResults(
+            goAPIResponse.results,
+            chart.label,
+            chart.key
+        );
+        setData(parsedGoAPIResponse);
+    };
+
+    const getDataFromResponseResults = (
+        responseResults: GoAPIResponseResult[],
+        responseResultLabel: string,
+        responseResultKey: string
     ) => {
         const data: Data = {
             labels: [],
             datasets: [
                 {
-                    label: label,
+                    label: responseResultLabel,
                     data: [],
                     backgroundColor: [],
                     borderColor: [],
@@ -134,13 +142,15 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
             ],
         };
 
-        projects.forEach((project) => {
-            const dataIndex = data.labels.indexOf(project[key]);
+        responseResults.forEach((responseResult) => {
+            const dataIndex = data.labels.indexOf(
+                responseResult[responseResultKey]
+            );
 
             if (dataIndex >= 0) {
                 data.datasets[0].data[dataIndex] += 1;
             } else {
-                data.labels.push(project[key]);
+                data.labels.push(responseResult[responseResultKey]);
                 data.datasets[0].data.push(1);
                 data.datasets[0].backgroundColor = backgroundColors.slice(
                     0,
