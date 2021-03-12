@@ -21,7 +21,7 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
         <IonContent className='code-container' scrollY={false}>
             <IonHeader>
                 {languages.map((language, languageIndex) => {
-                    return (
+                    return code[language] ? (
                         <IonButton
                             key={languageIndex}
                             fill={
@@ -33,7 +33,7 @@ export const CodeContainer: React.FC<CodeContainerProps> = ({
                         >
                             {language}
                         </IonButton>
-                    );
+                    ) : null;
                 })}
             </IonHeader>
             <IonContent className='code-viewer'>

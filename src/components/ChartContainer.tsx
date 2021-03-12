@@ -14,14 +14,16 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({
     selectedLanguage,
 }) => {
     const renderChartContainer = () => {
-        return (
-            <ChartViewer
-                chart={chart[selectedLanguage]}
-                api={api}
-                selectedLanguage={selectedLanguage}
-            ></ChartViewer>
-        );
+        return chart[selectedLanguage] ? (
+            <div className='chart-container'>
+                <ChartViewer
+                    chart={chart[selectedLanguage]}
+                    api={api}
+                    selectedLanguage={selectedLanguage}
+                ></ChartViewer>
+            </div>
+        ) : null;
     };
 
-    return <div className='chart-container'>{renderChartContainer()}</div>;
+    return renderChartContainer();
 };
