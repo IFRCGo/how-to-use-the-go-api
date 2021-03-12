@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.4.2...v0.5.0) (2021-03-12)
+
+
+### Features
+
+* appeals resolves [#10](https://github.com/IFRCGo/how-to-use-the-go-api/issues/10) ([3d310c2](https://github.com/IFRCGo/how-to-use-the-go-api/commit/3d310c2c10e10b670d8f9ab92fe1193ca047ed8d))
+
+
+
 ## [0.4.2](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.4.1...v0.4.2) (2021-03-12)
 
 
