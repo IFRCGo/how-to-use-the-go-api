@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.4.1...v0.4.2) (2021-03-12)
+
+
+### Bug Fixes
+
+* set code mirror height ([e0c1317](https://github.com/IFRCGo/how-to-use-the-go-api/commit/e0c131707cf49781b74bd716507fcb48cf2eaaea))
+
+
+
 ## [0.4.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.4.0...v0.4.1) (2021-03-12)
 
 
