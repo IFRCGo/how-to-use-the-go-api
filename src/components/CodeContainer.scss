@@ -8,5 +8,9 @@ ion-content {
 
     &.code-viewer {
         --background: var(--ion-color-light-shade);
+
+        .CodeMirror {
+            height: 356px;
+        }
     }
 }
