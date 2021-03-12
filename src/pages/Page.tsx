@@ -8,7 +8,7 @@ import {
     IonTitle,
     IonToolbar,
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { CodeContainer } from '../components/CodeContainer';
 import { Theme } from '../components/Theme';
 import { ChartContainer } from '../components/ChartContainer';
@@ -17,17 +17,44 @@ import languages from '../assets/languages.json';
 import { useLocation } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import './Page.css';
+import { Example } from '../models/example';
 
 const Page: React.FC = () => {
     const location = useLocation();
-    const exampleIndex = examples.findIndex(
-        (example) => '#example' + example.id === location.hash
-    );
-    const example = exampleIndex >= 0 ? examples[exampleIndex] : examples[0];
-    const name = example.title;
+
+    const getExample = useCallback((): Example => {
+        const exampleIndex = examples.findIndex(
+            (example) => '#example' + example.id === location.hash
+        );
+        const example =
+            exampleIndex >= 0 ? examples[exampleIndex] : examples[0];
+        return example as Example;
+    }, [location.hash]);
+
+    const [selectedExample, setSelectedExample] = React.useState(getExample());
+
+    useEffect(() => {
+        setSelectedExample(getExample());
+    }, [getExample, location]);
+
+    const name = selectedExample.title;
+
+    const getDefaultLanguageForExample = (example: Example): string => {
+        return (
+            languages.find(
+                (language: string) => example.code && language in example.code
+            ) || languages[0]
+        );
+    };
+
     const [selectedLanguage, setSelectedLanguage] = React.useState(
-        languages[0]
+        getDefaultLanguageForExample(selectedExample)
     );
+
+    useEffect(() => {
+        setSelectedLanguage(getDefaultLanguageForExample(selectedExample));
+    }, [selectedExample]);
+
     const isDarkPreferred = window.matchMedia('(prefers-color-scheme: dark)')
         .matches;
     const [isDarkThemeChecked, setDarkThemeChecked] = useState(isDarkPreferred);
@@ -56,29 +83,29 @@ const Page: React.FC = () => {
                     </IonToolbar>
                 </IonHeader>
                 <IonNote className='ion-margin ion-padding'>
-                    {example.description}
+                    {selectedExample.description}
                 </IonNote>
                 <div className='ion-margin'>
-                    {example.guide && (
+                    {selectedExample.guide && (
                         <ReactMarkdown
                             className='ion-padding'
-                            source={example.guide}
+                            source={selectedExample.guide}
                         />
                     )}
                 </div>
                 <div className='ion-margin'>
-                    {example.chart && (
+                    {selectedExample.chart && (
                         <ChartContainer
-                            chart={example.chart}
-                            api={example.api}
+                            chart={selectedExample.chart}
+                            api={selectedExample.api}
                             selectedLanguage={selectedLanguage}
                         />
                     )}
                 </div>
                 <div className='ion-margin'>
-                    {example.code && (
+                    {selectedExample.code && (
                         <CodeContainer
-                            code={example.code}
+                            code={selectedExample.code}
                             selectedLanguage={selectedLanguage}
                             setSelectedLanguage={setSelectedLanguage}
                             isDarkThemeChecked={isDarkThemeChecked}

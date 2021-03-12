@@ -9,6 +9,7 @@ import 'codemirror/theme/xq-light.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/python/python';
+import 'codemirror/addon/display/autorefresh';
 
 interface CodeViewerProps {
     code: string;
@@ -45,6 +46,7 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({
         case languages[2]:
             const javaScriptOptions = {
                 lineNumbers: true,
+                autoRefresh: true,
                 matchBrackets: true,
                 mode: 'text/typescript',
                 theme: isDarkThemeChecked ? 'material' : 'xq-light',
@@ -59,6 +61,7 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({
         case languages[3]:
             const pythonOptions = {
                 lineNumbers: true,
+                autoRefresh: true,
                 matchBrackets: true,
                 mode: 'python',
                 theme: isDarkThemeChecked ? 'material' : 'xq-light',
