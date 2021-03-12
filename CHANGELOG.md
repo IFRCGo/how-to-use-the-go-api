@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.4.0...v0.4.1) (2021-03-12)
+
+
+### Bug Fixes
+
+* language select and code refresh on example change ([ffdf207](https://github.com/IFRCGo/how-to-use-the-go-api/commit/ffdf20735abaee3eabbef380cafe92e5a0b016a8))
+
+
+
 # [0.4.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.3.1...v0.4.0) (2021-03-12)
 
 
