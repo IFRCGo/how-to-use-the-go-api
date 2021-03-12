@@ -2,7 +2,7 @@
   "files": {
     "static/js/0.37bfddc3.chunk.js": "/how-to-use-the-go-api/static/js/0.37bfddc3.chunk.js",
     "static/js/0.37bfddc3.chunk.js.map": "/how-to-use-the-go-api/static/js/0.37bfddc3.chunk.js.map",
-    "main.css": "/how-to-use-the-go-api/static/css/main.b3e5ae47.chunk.css",
+    "main.css": "/how-to-use-the-go-api/static/css/main.acf4ec3c.chunk.css",
     "main.js": "/how-to-use-the-go-api/static/js/main.adaab748.chunk.js",
     "main.js.map": "/how-to-use-the-go-api/static/js/main.adaab748.chunk.js.map",
     "polyfills-css-shim.js": "/how-to-use-the-go-api/static/js/polyfills-css-shim.fe7b62ff.chunk.js",
@@ -121,10 +121,10 @@
     "static/js/58.cf32b4a4.chunk.js": "/how-to-use-the-go-api/static/js/58.cf32b4a4.chunk.js",
     "static/js/58.cf32b4a4.chunk.js.map": "/how-to-use-the-go-api/static/js/58.cf32b4a4.chunk.js.map",
     "index.html": "/how-to-use-the-go-api/index.html",
-    "precache-manifest.c1501b030d6416a420b912bf90f19734.js": "/how-to-use-the-go-api/precache-manifest.c1501b030d6416a420b912bf90f19734.js",
+    "precache-manifest.d79a84f6f971c5a1a3828045323beb65.js": "/how-to-use-the-go-api/precache-manifest.d79a84f6f971c5a1a3828045323beb65.js",
     "service-worker.js": "/how-to-use-the-go-api/service-worker.js",
     "static/css/5.ad64017e.chunk.css.map": "/how-to-use-the-go-api/static/css/5.ad64017e.chunk.css.map",
-    "static/css/main.b3e5ae47.chunk.css.map": "/how-to-use-the-go-api/static/css/main.b3e5ae47.chunk.css.map",
+    "static/css/main.acf4ec3c.chunk.css.map": "/how-to-use-the-go-api/static/css/main.acf4ec3c.chunk.css.map",
     "static/js/5.2078e61c.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/5.2078e61c.chunk.js.LICENSE.txt",
     "static/js/53.61920891.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/53.61920891.chunk.js.LICENSE.txt",
     "static/js/58.cf32b4a4.chunk.js.LICENSE.txt": "/how-to-use-the-go-api/static/js/58.cf32b4a4.chunk.js.LICENSE.txt",
@@ -134,7 +134,7 @@
     "static/js/runtime-main.ea1b4b0c.js",
     "static/css/5.ad64017e.chunk.css",
     "static/js/5.2078e61c.chunk.js",
-    "static/css/main.b3e5ae47.chunk.css",
+    "static/css/main.acf4ec3c.chunk.css",
     "static/js/main.adaab748.chunk.js"
   ]
 }
