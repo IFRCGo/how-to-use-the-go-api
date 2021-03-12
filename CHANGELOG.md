@@ -1,3 +1,14 @@
+# [0.4.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.3.1...v0.4.0) (2021-03-12)
+
+
+### Features
+
+* add auth token ([c8cf038](https://github.com/IFRCGo/how-to-use-the-go-api/commit/c8cf038e0a71c7e3926c48393fae9ac58d0c4031))
+* add surge request example ([9fc4409](https://github.com/IFRCGo/how-to-use-the-go-api/commit/9fc440948f8133402cfac9af65c3ec40eb95ff4e))
+* example3 and example0 ([0ad5e77](https://github.com/IFRCGo/how-to-use-the-go-api/commit/0ad5e772277996e3a318b48879e90df7c1046b31))
+
+
+
 ## [0.3.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.3.0...v0.3.1) (2021-03-05)
 
 
