@@ -56,7 +56,7 @@ export const Chart: React.FC = () => {
     const fetchSurgeAlerts = () => {
         fetch('https://goadmin.ifrc.org/api/v2/surge_alert/?limit=1000', {
             headers: {
-                Authorization: 'Token AUTH_TOKEN',
+                Authorization: 'Token GO_API_AUTHORIZATION_TOKEN',
             },
         })
             .then((response) => response.json())
