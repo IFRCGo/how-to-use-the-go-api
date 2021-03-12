@@ -3,19 +3,19 @@ export class Example {
     'title': string;
     'description': string;
     'code'?: {
-        'Power BI': string;
-        Tableau: string;
-        JavaScript: string;
-        Python: string;
+        'Power BI'?: string;
+        Tableau?: string;
+        JavaScript?: string;
+        Python?: string;
     };
     'chart'?: {
-        'Power BI': string;
-        Tableau: string;
-        JavaScript: string;
-        Python: string;
+        'Power BI'?: string;
+        Tableau?: string;
+        JavaScript?: string;
+        Python?: string;
     };
     'api'?: {
         url: string;
     };
-    'guide': string;
+    'guide'?: string;
 }
