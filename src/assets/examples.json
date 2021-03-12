@@ -327,5 +327,13 @@
         "api": {
             "url": "https://goadmin.ifrc.org/api/v2/surge_alert/?limit=1000"
         }
+    },
+    {
+        "id": 4,
+        "title": "Example 4: Get Appeal Documents by Appeal Code",
+        "description": "Search for appeal documents by an appeal code",
+        "code": {
+            "JavaScript": "const getAppealDocumentsByAppealCode = (appealCode: string) => {\n\tfetch(`https://goadmin.ifrc.org/api/v2/appeal/?limit=1&code=${appealCode}`)\n\t\t.then((response) => response.json())\n\t\t.then((response) => {\n\t\t\tconst appealId = response.results[0].aid;\n\t\t\tfetch(\n\t\t\t\t`https://goadmin.ifrc.org/api/v2/appeal_document/?limit=10&appeal=${appealId}`\n\t\t\t)\n\t\t\t\t.then((response) => response.json())\n\t\t\t\t.then((response) => {\n\t\t\t\t\tconsole.log(JSON.stringify(response.results));\n\t\t\t\t});\n\t\t});\n};\n\ngetAppealDocumentsByAppealCode('MDRCM002');\n\n/*\n[\n\t{\n\t\t\"created_at\": \"2021-02-20T00:00:00Z\",\n\t\t\"document\": null,\n\t\t\"document_url\": \"https://www.ifrc.org/docs/appeals/Active/MDRGN012.pdf\",\n\t\t\"appeal\": 3388,\n\t\t\"id\": 2699,\n\t\t\"name\": \"Donor Response\"\n\t},\n\t{\n\t\t\"created_at\": \"2021-02-18T00:00:00Z\",\n\t\t\"document\": null,\n\t\t\"document_url\": \"https://www.ifrc.org/docs/Appeals/21/IB%20Guinea_Ebola%20Virus%20Disease.pdf\",\n\t\t\"appeal\": 3388,\n\t\t\"id\": 2697,\n\t\t\"name\": \"IB Guinea_Ebola Virus Disease\"\n\t},\n\t{\n\t\t\"created_at\": \"2021-02-17T00:00:00Z\",\n\t\t\"document\": null,\n\t\t\"document_url\": \"https://adore.ifrc.org/Download.aspx?FileId=386727\",\n\t\t\"appeal\": 3388,\n\t\t\"id\": 2696,\n\t\t\"name\": \"DREF Operation\"\n\t}\n]\n*/\n"
+        }
     }
 ]
