@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.5.0...v0.6.0) (2021-03-29)
+
+
+### Features
+
+* combine with 3rd party API resolves [#11](https://github.com/IFRCGo/how-to-use-the-go-api/issues/11) ([ba968d4](https://github.com/IFRCGo/how-to-use-the-go-api/commit/ba968d49022b7df8239a7ab94a990877aa409cc7))
+
+
+
 # [0.5.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.4.2...v0.5.0) (2021-03-12)
 
 
