@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { IonImg, IonNote } from '@ionic/react';
 import languages from '../assets/languages.json';
@@ -13,8 +13,45 @@ interface GoAPIResponse {
     results: GoAPIResponseResult[];
 }
 
+interface ReliefWebAPIResponse {
+    count: number;
+    next: string;
+    previous: string;
+    results: GoAPIResponseResult[];
+    data: ReliefWebAPIResponseData[];
+    embedded: ReliefWebAPIResponseEmbedded;
+    href: string;
+    time: number;
+    took: number;
+    totalCount: number;
+}
+
 interface GoAPIResponseResult {
     [key: string]: string;
+}
+
+interface ReliefWebAPIResponseData {
+    [key: string]: string;
+}
+
+interface ReliefWebAPIResponseEmbedded {
+    facets: ReliefWebAPIResponseFacets;
+}
+
+interface ReliefWebAPIResponseFacets {
+    [key: string]: ReliefWebAPIResponseFacet;
+}
+
+interface ReliefWebAPIResponseFacet {
+    data: ReliefWebAPIResponseFacetData[];
+    missing: number;
+    more: boolean;
+    type: string;
+}
+
+interface ReliefWebAPIResponseFacetData {
+    value: string;
+    count: number;
 }
 
 interface Dataset {
@@ -34,6 +71,21 @@ interface ChartViewerProps {
     chart: any;
     api: any;
     selectedLanguage: string;
+}
+
+function ObjectByString(o: any, s: string) {
+    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    s = s.replace(/^\./, ''); // strip a leading dot
+    const a = s.split('.');
+    for (var i = 0, n = a.length; i < n; ++i) {
+        const k = a[i];
+        if (k in o) {
+            o = o[k];
+        } else {
+            return;
+        }
+    }
+    return o;
 }
 
 export const ChartViewer: React.FC<ChartViewerProps> = ({
@@ -60,6 +112,72 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)',
     ];
+
+    const getDataFromReliefWebResponse = useCallback(
+        (reliefWebAPIResponse: ReliefWebAPIResponse) => {
+            return reliefWebAPIResponse.embedded.facets[
+                api.reliefWeb.key
+            ].data.map(
+                (
+                    reliefWebAPIResponseFacetData: ReliefWebAPIResponseFacetData
+                ) => reliefWebAPIResponseFacetData.count
+            );
+        },
+        [api.reliefWeb.key]
+    );
+
+    const onReliefWebAPIResponse = useCallback(
+        (reliefWebResponse: ReliefWebAPIResponse): void => {
+            const parsedReliefWebAPIResponse = getDataFromReliefWebResponse(
+                reliefWebResponse
+            );
+            if (data.datasets[0] && data.datasets.length < 2) {
+                const reliefWebDataset: Dataset = {
+                    label: api.reliefWeb.label,
+                    data: parsedReliefWebAPIResponse,
+                    backgroundColor: Array(data.labels.length).fill(
+                        backgroundColors[1]
+                    ),
+                    borderColor: Array(data.labels.length).fill(
+                        borderColors[1]
+                    ),
+                    borderWidth: 1,
+                };
+                const newDatasets = data.datasets.concat(reliefWebDataset);
+                const newData = { ...data };
+                newData.datasets = newDatasets;
+                newData.datasets[0].backgroundColor = Array(
+                    data.labels.length
+                ).fill(backgroundColors[0]);
+                newData.datasets[0].borderColor = Array(
+                    data.labels.length
+                ).fill(borderColors[0]);
+                setData(newData);
+            }
+        },
+        [
+            api.reliefWeb.label,
+            data,
+            getDataFromReliefWebResponse,
+            backgroundColors,
+            borderColors,
+        ]
+    );
+
+    const callReliefWebAPI = useCallback(() => {
+        return fetch(api.reliefWeb.url, {
+            body: JSON.stringify(api.reliefWeb.body),
+            method: 'POST',
+        })
+            .then((response) => response.json())
+            .then(onReliefWebAPIResponse);
+    }, [api.reliefWeb, onReliefWebAPIResponse]);
+
+    useEffect(() => {
+        if (api.reliefWeb) {
+            callReliefWebAPI();
+        }
+    }, [api.reliefWeb, callReliefWebAPI]);
 
     const callGoAPI = () => {
         if (
@@ -143,14 +261,17 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
         };
 
         responseResults.forEach((responseResult) => {
-            const dataIndex = data.labels.indexOf(
-                responseResult[responseResultKey]
+            const responseResultValue = ObjectByString(
+                responseResult,
+                responseResultKey
             );
+
+            const dataIndex = data.labels.indexOf(responseResultValue);
 
             if (dataIndex >= 0) {
                 data.datasets[0].data[dataIndex] += 1;
             } else {
-                data.labels.push(responseResult[responseResultKey]);
+                data.labels.push(responseResultValue);
                 data.datasets[0].data.push(1);
                 data.datasets[0].backgroundColor = backgroundColors.slice(
                     0,

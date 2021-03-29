@@ -335,5 +335,56 @@
         "code": {
             "JavaScript": "const getAppealDocumentsByAppealCode = (appealCode: string) => {\n\tfetch(`https://goadmin.ifrc.org/api/v2/appeal/?limit=1&code=${appealCode}`)\n\t\t.then((response) => response.json())\n\t\t.then((response) => {\n\t\t\tconst appealId = response.results[0].aid;\n\t\t\tfetch(\n\t\t\t\t`https://goadmin.ifrc.org/api/v2/appeal_document/?limit=10&appeal=${appealId}`\n\t\t\t)\n\t\t\t\t.then((response) => response.json())\n\t\t\t\t.then((response) => {\n\t\t\t\t\tconsole.log(JSON.stringify(response.results));\n\t\t\t\t});\n\t\t});\n};\n\ngetAppealDocumentsByAppealCode('MDRCM002');\n\n/*\n[\n\t{\n\t\t\"created_at\": \"2021-02-20T00:00:00Z\",\n\t\t\"document\": null,\n\t\t\"document_url\": \"https://www.ifrc.org/docs/appeals/Active/MDRGN012.pdf\",\n\t\t\"appeal\": 3388,\n\t\t\"id\": 2699,\n\t\t\"name\": \"Donor Response\"\n\t},\n\t{\n\t\t\"created_at\": \"2021-02-18T00:00:00Z\",\n\t\t\"document\": null,\n\t\t\"document_url\": \"https://www.ifrc.org/docs/Appeals/21/IB%20Guinea_Ebola%20Virus%20Disease.pdf\",\n\t\t\"appeal\": 3388,\n\t\t\"id\": 2697,\n\t\t\"name\": \"IB Guinea_Ebola Virus Disease\"\n\t},\n\t{\n\t\t\"created_at\": \"2021-02-17T00:00:00Z\",\n\t\t\"document\": null,\n\t\t\"document_url\": \"https://adore.ifrc.org/Download.aspx?FileId=386727\",\n\t\t\"appeal\": 3388,\n\t\t\"id\": 2696,\n\t\t\"name\": \"DREF Operation\"\n\t}\n]\n*/\n"
         }
+    },
+    {
+        "id": 5,
+        "title": "Example 5: Events in Countries",
+        "description": "Number of events in India, Indonesia, Suriname, Nepal and Bangladesh",
+        "code": {
+            "JavaScript": "import React, { useCallback, useEffect, useState } from 'react';\nimport { Bar } from 'react-chartjs-2';\n\ninterface Dataset {\n\tlabel: string;\n\tdata: number[];\n\tbackgroundColor: string[];\n\tborderColor: string[];\n\tborderWidth: number;\n}\n\ninterface Data {\n\tlabels: string[];\n\tdatasets: Dataset[];\n}\n\ninterface GoAPIResponse {\n\tcount: number;\n\tnext: string;\n\tprevious: string;\n\tresults: GoAPIResponseResult[];\n}\n\ninterface ReliefWebAPIResponse {\n\tcount: number;\n\tnext: string;\n\tprevious: string;\n\tresults: GoAPIResponseResult[];\n\tdata: ReliefWebAPIResponseData[];\n\tembedded: ReliefWebAPIResponseEmbedded;\n\thref: string;\n\ttime: number;\n\ttook: number;\n\ttotalCount: number;\n}\n\ninterface GoAPIResponseResult {\n\t[key: string]: string;\n}\n\ninterface ReliefWebAPIResponseData {\n\t[key: string]: string;\n}\n\ninterface ReliefWebAPIResponseEmbedded {\n\tfacets: ReliefWebAPIResponseFacets;\n}\n\ninterface ReliefWebAPIResponseFacets {\n\t[key: string]: ReliefWebAPIResponseFacet;\n}\n\ninterface ReliefWebAPIResponseFacet {\n\tdata: ReliefWebAPIResponseFacetData[];\n\tmissing: number;\n\tmore: boolean;\n\ttype: string;\n}\n\ninterface ReliefWebAPIResponseFacetData {\n\tvalue: string;\n\tcount: number;\n}\n\nfunction ObjectByString(o: any, s: string) {\n\ts = s.replace(/[(w+)]/g, '.$1'); // convert indexes to properties\n\ts = s.replace(/^./, ''); // strip a leading dot\n\tconst a = s.split('.');\n\tfor (var i = 0, n = a.length; i < n; ++i) {\n\t\tconst k = a[i];\n\t\tif (k in o) {\n\t\t\to = o[k];\n\t\t} else {\n\t\t\treturn;\n\t\t}\n\t}\n\treturn o;\n}\n\nexport const Chart: React.FC = () => {\n\tconst [data, setData] = useState({} as Data);\n\n\tconst goAPIUrl =\n\t\t'https://goadmin.ifrc.org/api/v2/event/?countries__in=123%2C84%2C85%2C180&format=json&limit=1000';\n\tconst goAPILabel = '# of Events in Go';\n\tconst goAPIKey = 'countries.0.iso3';\n\n\tconst reliefWebFacet = 'primary_country.iso3';\n\tconst reliefWebLabel = '# of Events in ReliefWeb';\n\tconst reliefWebFacetValues = ['IND', 'NPL', 'SUR', 'IDN', 'BGD'];\n\tconst reliefWebUrl =\n\t\t'https://api.reliefweb.int/v1/disasters?appname=how-to-use-the-go-api&appname=how-to-use-the-go-api';\n\n\tconst backgroundColors = [\n\t\t'rgba(255, 99, 132, 0.2)',\n\t\t'rgba(54, 162, 235, 0.2)',\n\t\t'rgba(255, 206, 86, 0.2)',\n\t\t'rgba(75, 192, 192, 0.2)',\n\t\t'rgba(153, 102, 255, 0.2)',\n\t\t'rgba(255, 159, 64, 0.2)',\n\t];\n\n\tconst borderColors = [\n\t\t'rgba(255, 99, 132, 1)',\n\t\t'rgba(54, 162, 235, 1)',\n\t\t'rgba(255, 206, 86, 1)',\n\t\t'rgba(75, 192, 192, 1)',\n\t\t'rgba(153, 102, 255, 1)',\n\t\t'rgba(255, 159, 64, 1)',\n\t];\n\n\tconst options = {\n\t\tscales: {\n\t\t\tyAxes: [\n\t\t\t\t{\n\t\t\t\t\tticks: {\n\t\t\t\t\t\tbeginAtZero: true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t],\n\t\t},\n\t};\n\n\tconst reliefWeb = useCallback(() => {\n\t\tconst callReliefWebAPIBody = {\n\t\t\tlimit: 1000,\n\t\t\tpreset: 'latest',\n\t\t\tfacets: [\n\t\t\t\t{\n\t\t\t\t\tfield: reliefWebFacet,\n\t\t\t\t},\n\t\t\t],\n\t\t\tfilter: {\n\t\t\t\tconditions: [\n\t\t\t\t\t{\n\t\t\t\t\t\tfield: reliefWebFacet,\n\t\t\t\t\t\tvalue: reliefWebFacetValues,\n\t\t\t\t\t\toperator: 'OR',\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t},\n\t\t};\n\n\t\treturn fetch(reliefWebUrl, {\n\t\t\tbody: JSON.stringify(callReliefWebAPIBody),\n\t\t\tmethod: 'POST',\n\t\t})\n\t\t\t.then((response) => response.json())\n\t\t\t.then((reliefWebResponse: ReliefWebAPIResponse): void => {\n\t\t\t\tconst parsedReliefWebAPIResponse = reliefWebResponse.embedded.facets[\n\t\t\t\t\treliefWebFacet\n\t\t\t\t].data.map(\n\t\t\t\t\t(\n\t\t\t\t\t\treliefWebAPIResponseFacetData: ReliefWebAPIResponseFacetData\n\t\t\t\t\t) => reliefWebAPIResponseFacetData.count\n\t\t\t\t);\n\n\t\t\t\tif (data.datasets[0] && data.datasets.length < 2) {\n\t\t\t\t\tconst reliefWebDataset: Dataset = {\n\t\t\t\t\t\tlabel: reliefWebLabel,\n\t\t\t\t\t\tdata: parsedReliefWebAPIResponse,\n\t\t\t\t\t\tbackgroundColor: Array(data.labels.length).fill(\n\t\t\t\t\t\t\tbackgroundColors[1]\n\t\t\t\t\t\t),\n\t\t\t\t\t\tborderColor: Array(data.labels.length).fill(\n\t\t\t\t\t\t\tborderColors[1]\n\t\t\t\t\t\t),\n\t\t\t\t\t\tborderWidth: 1,\n\t\t\t\t\t};\n\t\t\t\t\tconst newDatasets = data.datasets.concat(reliefWebDataset);\n\t\t\t\t\tconst newData = { ...data };\n\t\t\t\t\tnewData.datasets = newDatasets;\n\t\t\t\t\tnewData.datasets[0].backgroundColor = Array(\n\t\t\t\t\t\tdata.labels.length\n\t\t\t\t\t).fill(backgroundColors[0]);\n\t\t\t\t\tnewData.datasets[0].borderColor = Array(\n\t\t\t\t\t\tdata.labels.length\n\t\t\t\t\t).fill(borderColors[0]);\n\t\t\t\t\tsetData(newData);\n\t\t\t\t}\n\t\t\t});\n\t}, [\n\t\treliefWebFacet,\n\t\treliefWebFacetValues,\n\t\treliefWebUrl,\n\t\tdata,\n\t\tbackgroundColors,\n\t\tborderColors,\n\t]);\n\n\tuseEffect(() => {\n\t\treliefWeb();\n\t}, [reliefWeb]);\n\n\tconst callGoAPI = () => {\n\t\tfetch(goAPIUrl)\n\t\t\t.then((response) => response.json())\n\t\t\t.then((goAPIResponse: GoAPIResponse): void => {\n\t\t\t\tconst parsedGoAPIResponse = getDataFromResponseResults(\n\t\t\t\t\tgoAPIResponse.results,\n\t\t\t\t\tgoAPILabel,\n\t\t\t\t\tgoAPIKey\n\t\t\t\t);\n\t\t\t\tsetData(parsedGoAPIResponse);\n\t\t\t});\n\t};\n\n\tuseEffect(callGoAPI, [data]);\n\n\tconst getDataFromResponseResults = (\n\t\tresponseResults: GoAPIResponseResult[],\n\t\tresponseResultLabel: string,\n\t\tresponseResultKey: string\n\t) => {\n\t\tconst data: Data = {\n\t\t\tlabels: [],\n\t\t\tdatasets: [\n\t\t\t\t{\n\t\t\t\t\tlabel: responseResultLabel,\n\t\t\t\t\tdata: [],\n\t\t\t\t\tbackgroundColor: [],\n\t\t\t\t\tborderColor: [],\n\t\t\t\t\tborderWidth: 1,\n\t\t\t\t},\n\t\t\t],\n\t\t};\n\n\t\tresponseResults.forEach((responseResult) => {\n\t\t\tconst responseResultValue = ObjectByString(\n\t\t\t\tresponseResult,\n\t\t\t\tresponseResultKey\n\t\t\t);\n\n\t\t\tconst dataIndex = data.labels.indexOf(responseResultValue);\n\n\t\t\tif (dataIndex >= 0) {\n\t\t\t\tdata.datasets[0].data[dataIndex] += 1;\n\t\t\t} else {\n\t\t\t\tdata.labels.push(responseResultValue);\n\t\t\t\tdata.datasets[0].data.push(1);\n\t\t\t\tdata.datasets[0].backgroundColor = backgroundColors.slice(\n\t\t\t\t\t0,\n\t\t\t\t\tdata.datasets[0].data.length\n\t\t\t\t);\n\t\t\t\tdata.datasets[0].borderColor = borderColors.slice(\n\t\t\t\t\t0,\n\t\t\t\t\tdata.datasets[0].data.length\n\t\t\t\t);\n\t\t\t}\n\t\t});\n\n\t\treturn data;\n\t};\n\n\treturn <Bar data={data} options={options} />;\n};\n"
+        },
+        "chart": {
+            "JavaScript": {
+                "label": "# of Events in Go",
+                "key": "countries.0.iso3",
+                "options": {
+                    "scales": {
+                        "yAxes": [
+                            {
+                                "ticks": {
+                                    "beginAtZero": true
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "api": {
+            "url": "https://goadmin.ifrc.org/api/v2/event/?countries__in=123%2C84%2C85%2C180&format=json&limit=1000",
+            "reliefWeb": {
+                "url": "https://api.reliefweb.int/v1/disasters?appname=how-to-use-the-go-api&appname=how-to-use-the-go-api",
+                "key": "primary_country.iso3",
+                "label": "# of Events in ReliefWeb",
+                "body": {
+                    "limit": 1000,
+                    "preset": "latest",
+                    "facets": [
+                        {
+                            "field": "primary_country.iso3"
+                        }
+                    ],
+                    "filter": {
+                        "conditions": [
+                            {
+                                "field": "primary_country.iso3",
+                                "value": ["IND", "NPL", "SUR", "IDN", "BGD"],
+                                "operator": "OR"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
     }
 ]
