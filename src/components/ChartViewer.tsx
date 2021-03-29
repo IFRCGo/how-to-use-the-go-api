@@ -123,7 +123,7 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
                 ) => reliefWebAPIResponseFacetData.count
             );
         },
-        [api.reliefWeb.key]
+        [api.reliefWeb]
     );
 
     const onReliefWebAPIResponse = useCallback(
@@ -156,7 +156,7 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
             }
         },
         [
-            api.reliefWeb.label,
+            api.reliefWeb,
             data,
             getDataFromReliefWebResponse,
             backgroundColors,
