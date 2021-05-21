@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.6.1...v0.7.0) (2021-05-21)
+
+
+### Features
+
+* add loader and fix chart issue ([7b55415](https://github.com/IFRCGo/how-to-use-the-go-api/commit/7b55415db46a34393c5da52982379cbcd2bc5743))
+
+
+
 ## [0.6.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.6.0...v0.6.1) (2021-03-29)
 
 
@@ -80,16 +89,6 @@
 ### Bug Fixes
 
 * deploy and build workflows ([bc21c84](https://github.com/IFRCGo/how-to-use-the-go-api/commit/bc21c84dbcd90e0189837667491c7287ce6b8f91))
-
-
-
-## [0.2.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.0...v0.2.1) (2021-02-19)
-
-
-### Bug Fixes
-
-* add build to prettier ignore ([55186f3](https://github.com/IFRCGo/how-to-use-the-go-api/commit/55186f36f405123f86538fee3d4a432453e0c9e5))
-* update readme - dummy commit to test ci ([118faf6](https://github.com/IFRCGo/how-to-use-the-go-api/commit/118faf644832cf8f46b4e065c089fc6535492735))
 
 
 
