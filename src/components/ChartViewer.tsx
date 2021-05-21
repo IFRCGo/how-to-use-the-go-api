@@ -94,6 +94,7 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
     selectedLanguage,
 }) => {
     const [data, setData] = useState({} as Data);
+    const [loading, setLoading] = useState(false);
 
     const backgroundColors = [
         'rgba(255, 99, 132, 0.2)',
@@ -164,34 +165,32 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
         ]
     );
 
-    const callReliefWebAPI = useCallback(() => {
-        return fetch(api.reliefWeb.url, {
-            body: JSON.stringify(api.reliefWeb.body),
-            method: 'POST',
-        })
-            .then((response) => response.json())
-            .then(onReliefWebAPIResponse);
-    }, [api.reliefWeb, onReliefWebAPIResponse]);
-
-    useEffect(() => {
-        if (api.reliefWeb) {
-            callReliefWebAPI();
+    const callReliefWebAPI = () => {
+        if (chart && selectedLanguage === languages[2] && api.reliefWeb) {
+            setLoading(true);
+            fetch(api.reliefWeb.url, {
+                body: JSON.stringify(api.reliefWeb.body),
+                method: 'POST',
+            })
+                .then((response) => response.json())
+                .then(onReliefWebAPIResponse)
+                .finally(() => setLoading(false));
         }
-    }, [api.reliefWeb, callReliefWebAPI]);
+    };
 
     const callGoAPI = () => {
-        if (
-            chart &&
-            selectedLanguage === languages[2] &&
-            data.datasets.length === 0
-        ) {
+        if (chart && selectedLanguage === languages[2]) {
+            setLoading(true);
             fetch(api.url)
                 .then((response) => response.json())
-                .then(onGoAPIResponse);
+                .then(onGoAPIResponse)
+                .finally(() => setLoading(false));
         }
     };
 
     useEffect(callGoAPI, [api.url, selectedLanguage]);
+
+    useEffect(callReliefWebAPI, [api, data]);
 
     useEffect(() => {
         if (!chart) return;
@@ -302,7 +301,11 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
             case languages[1]:
                 return <IonImg src={chart} className='ion-image' />;
             case languages[2]:
-                return <Bar data={data} options={chart.options} />;
+                return loading ? (
+                    <div className='loader'>Loading...</div>
+                ) : (
+                    <Bar data={data} options={chart.options} />
+                );
             case languages[3]:
                 return <div id='python-chart'></div>;
             default:
