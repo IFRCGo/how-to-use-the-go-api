@@ -198,7 +198,7 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
         }
     };
 
-    useEffect(callGoAPI, [api.url, selectedLanguage]);
+    useEffect(callGoAPI, [api, selectedLanguage]);
 
     useEffect(callReliefWebAPI, [api, data]);
 
