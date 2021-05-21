@@ -74,7 +74,7 @@ export const Chart: React.FC = () => {
             labels: [],
             datasets: [
                 {
-                    label: '# of Projects',
+                    label: '# of Proyectos',
                     data: [],
                     backgroundColor: [],
                     borderColor: [],
