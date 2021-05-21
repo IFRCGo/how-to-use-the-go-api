@@ -16,6 +16,7 @@ export class Example {
     };
     'api'?: {
         url: string;
+        headers?: object;
     };
     'guide'?: string;
 }

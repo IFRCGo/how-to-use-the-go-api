@@ -181,7 +181,17 @@ export const ChartViewer: React.FC<ChartViewerProps> = ({
     const callGoAPI = () => {
         if (chart && selectedLanguage === languages[2]) {
             setLoading(true);
-            fetch(api.url)
+
+            const requestHeaders: HeadersInit = new Headers();
+            if (api.headers) {
+                for (const [key, value] of Object.entries(api.headers)) {
+                    requestHeaders.set(key, `${value}`);
+                }
+            }
+
+            fetch(api.url, {
+                headers: requestHeaders,
+            })
                 .then((response) => response.json())
                 .then(onGoAPIResponse)
                 .finally(() => setLoading(false));
