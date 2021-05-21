@@ -1,3 +1,17 @@
+# [0.8.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.7.0...v0.8.0) (2021-05-21)
+
+
+### Bug Fixes
+
+* use spanish word for label ([7d64dd9](https://github.com/IFRCGo/how-to-use-the-go-api/commit/7d64dd9099371ba16c99f2d6fb3fde7abb9b57a4))
+
+
+### Features
+
+* add example for multiple languages [#31](https://github.com/IFRCGo/how-to-use-the-go-api/issues/31) ([ccb8140](https://github.com/IFRCGo/how-to-use-the-go-api/commit/ccb81401dc6555461866452e4df6fdcc61966274))
+
+
+
 # [0.7.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.6.1...v0.7.0) (2021-05-21)
 
 
@@ -80,15 +94,6 @@
 ### Features
 
 * add auth instructions ([1830b98](https://github.com/IFRCGo/how-to-use-the-go-api/commit/1830b98013e4df89b195643f3914f9c89d267721))
-
-
-
-## [0.2.2](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.1...v0.2.2) (2021-02-19)
-
-
-### Bug Fixes
-
-* deploy and build workflows ([bc21c84](https://github.com/IFRCGo/how-to-use-the-go-api/commit/bc21c84dbcd90e0189837667491c7287ce6b8f91))
 
 
 
