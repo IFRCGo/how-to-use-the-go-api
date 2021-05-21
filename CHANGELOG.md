@@ -1,3 +1,12 @@
+## [0.8.1](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.8.0...v0.8.1) (2021-05-21)
+
+
+### Bug Fixes
+
+* refetch data on api object ([3a991cb](https://github.com/IFRCGo/how-to-use-the-go-api/commit/3a991cbceb3ee1a8a7236f78ccf539c3ed173b4f))
+
+
+
 # [0.8.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.7.0...v0.8.0) (2021-05-21)
 
 
@@ -85,15 +94,6 @@
 * ci deploy ([ccd21f1](https://github.com/IFRCGo/how-to-use-the-go-api/commit/ccd21f15bb0876182cef353f86d6200aee5ae0ce))
 * workflow event type single quotes ([e6a00c7](https://github.com/IFRCGo/how-to-use-the-go-api/commit/e6a00c71009754a0cf2a0977c840f3c865a5870a))
 * workflow starts with single quotes ([1833c29](https://github.com/IFRCGo/how-to-use-the-go-api/commit/1833c29f38ed7c79963956da5cefbee9925e5c4e))
-
-
-
-# [0.3.0](https://github.com/IFRCGo/how-to-use-the-go-api/compare/v0.2.2...v0.3.0) (2021-03-05)
-
-
-### Features
-
-* add auth instructions ([1830b98](https://github.com/IFRCGo/how-to-use-the-go-api/commit/1830b98013e4df89b195643f3914f9c89d267721))
 
 
 
