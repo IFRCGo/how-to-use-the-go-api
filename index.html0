@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>How to use the go-api?</title>
+
+        <base href="/" />
+
+        <meta name="color-scheme" content="light dark" />
+        <meta
+            name="viewport"
+            content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="%PUBLIC_URL%/assets/icon/favicon.png"
+        />
+
+        <!-- add to homescreen for ios -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-title"
+            content="How to use the go-api?"
+        />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <script src="https://d3js.org/d3.v5.js"></script>
+        <script src="https://mpld3.github.io/js/mpld3.v0.5.1.js"></script>
+    </head>
+
+    <body>
+        <div id="root"></div>
+    </body>
+</html>

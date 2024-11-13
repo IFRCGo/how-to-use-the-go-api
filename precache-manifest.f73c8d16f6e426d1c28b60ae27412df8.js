@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "88b723b7412c2fee0aeb7085bec61f2d",
+    "revision": "4ff594474f5f9bf4866a87f00320546a",
     "url": "/how-to-use-the-go-api/index.html"
   },
   {
